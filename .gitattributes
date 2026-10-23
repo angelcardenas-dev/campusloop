@@ -1,0 +1,27 @@
+
+# Normalizar archivos de texto en Git.
+* text=auto
+
+# Archivos del proyecto: usar LF.
+*.html text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Conservar los recursos originales sin convertir sus bytes.
+*.svg -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.webp -text
+*.woff2 -text
+
+# Recursos binarios
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.woff2 binary

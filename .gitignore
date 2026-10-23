@@ -6,3 +6,9 @@ node_modules/
 !.env.example
 .DS_Store
 Thumbs.db
+
+# Archivos locales de herramientas; los recursos definitivos de assets sí se versionan.
+__pycache__/
+*.py[cod]
+.venv/
+.cache/
