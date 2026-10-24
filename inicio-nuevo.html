@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Inicio de CampusLoop: actividad universitaria, coordinaciones y artículos recomendados.">
+  <title>Inicio — Usuario nuevo — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <p id="home-pending" class="visually-hidden">Vista estática de ejemplo: usuario nuevo sin perfil vendedor activo. Los datos no provienen de una sesión real. Explorar, Publicar, Reservas, Notificaciones, Mi cuenta y las demás acciones están pendientes de implementación.</p>
+
+  <header class="home-header page-width">
+    <a class="brand home-brand" href="#contenido" aria-label="CampusLoop, Inicio"><img src="assets/icons/campus-32.svg" width="32" height="32" alt="">CampusLoop</a>
+    <nav class="home-primary" aria-label="Navegación principal autenticada">
+      <ul>
+          <li><a href="#contenido" aria-current="page">Inicio</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Explorar — pendiente de implementación">Explorar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Publicar / Activar perfil vendedor — pendiente de implementación">Publicar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación">Reservas</a></li>
+      </ul>
+    </nav>
+    <div class="home-search" role="search" aria-label="Búsqueda de artículos pendiente">
+      <img src="assets/icons/explorar-20.svg" width="20" height="20" alt=""><label class="visually-hidden" for="home-search">Buscar artículos</label><input id="home-search" type="search" placeholder="Buscar artículos..." readonly aria-disabled="true" aria-describedby="home-pending" title="Búsqueda pendiente de implementación">
+    </div>
+    <a class="home-notifications" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Notificaciones, pendiente" title="Notificaciones — pendiente de implementación"><img src="assets/icons/campana.svg" width="24" height="24" alt=""></a>
+    <a class="home-avatar" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Mi cuenta de María López, pendiente" title="Mi cuenta — pendiente de implementación"><img src="assets/images/avatares/maria-lopez.jpg" width="40" height="40" alt=""></a>
+  </header>
+
+  <!-- En Mobile solo se desplaza este contenedor; cabecera y barra inferior quedan fuera. -->
+  <div class="home-viewport" role="region" aria-label="Contenido desplazable de Inicio" tabindex="0">
+    <main id="contenido" class="home-main page-width" tabindex="-1">
+      <section class="home-welcome panel" aria-labelledby="home-title">
+        <h1 id="home-title">¡Hola, María!</h1>
+        <p>Tu comunidad universitaria te espera. Encuentra tu primer artículo.</p>
+        <div class="home-welcome-actions">
+          <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Explorar artículos — pendiente de implementación">Explorar artículos</a>
+          <a class="button button-outline home-activate" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Activar perfil vendedor — pendiente de implementación">Activar perfil vendedor</a>
+        </div>
+      </section>
+
+      <section class="home-summary" aria-labelledby="summary-title">
+        <h2 id="summary-title" class="visually-hidden">Resumen de tu actividad</h2>
+        <ul class="home-metrics">
+          <li class="home-metric panel"><p class="home-metric-value">0</p><p class="home-metric-label">Reserva activa</p></li>
+          <li class="home-metric panel"><p class="home-metric-value">0</p><p class="home-metric-label">Mensajes nuevos</p></li>
+          <li class="home-metric panel"><p class="home-metric-value">0</p><p class="home-metric-label">Compras completadas</p></li>
+        </ul>
+      </section>
+
+      <div class="home-coordination">
+        <section class="home-activity panel" aria-labelledby="activity-title">
+          <h2 id="activity-title">Actividad reciente</h2>
+          <div class="home-empty">
+            <h3>Todavía no tienes actividad</h3>
+            <p>Explora artículos o contacta a un vendedor para comenzar.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <section class="home-recommendations" aria-labelledby="recommendations-title">
+        <h2 id="recommendations-title">Descubre artículos de tu comunidad</h2>
+        <div class="home-products">
+        <article class="home-product">
+          <div class="home-product-image">
+            <img src="assets/images/productos/macbook-air-m1.jpg" width="282" height="176" alt="Laptop MacBook Air abierta.">
+            <span class="home-badge home-badge-available">Disponible</span>
+          </div>
+          <h3>MacBook Air M1 256 GB</h3>
+          <p class="home-product-category">Tecnológico · Laptops</p>
+          <p class="home-product-campus">PUCP · San Miguel</p>
+          <p class="home-product-price">S/ 2,400</p>
+          <p class="home-product-seller">Carlos Pérez · 4.8 · 32 calificaciones</p>
+          <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de MacBook Air M1 256 GB — pendiente de implementación">Ver detalle</a>
+        </article>
+        <article class="home-product">
+          <div class="home-product-image">
+            <img src="assets/images/productos/calculadora-casio-fx991ex.jpg" width="282" height="176" alt="Calculadora científica Casio FX-991EX.">
+            <span class="home-badge home-badge-available">Disponible</span>
+          </div>
+          <h3>Calculadora Casio FX-991EX</h3>
+          <p class="home-product-category">Académico · Calculadoras</p>
+          <p class="home-product-campus">UPC · Monterrico</p>
+          <p class="home-product-price">S/ 80</p>
+          <p class="home-product-seller">Ana Torres · 4.8 · 18 calificaciones</p>
+          <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Calculadora Casio FX-991EX — pendiente de implementación">Ver detalle</a>
+        </article>
+        <article class="home-product">
+          <div class="home-product-image">
+            <img src="assets/images/productos/nintendo-switch.jpg" width="282" height="176" alt="Consola Nintendo Switch con mandos de colores.">
+            <span class="home-badge home-badge-available">Disponible</span>
+          </div>
+          <h3>Nintendo Switch</h3>
+          <p class="home-product-category">Entretenimiento · Consolas</p>
+          <p class="home-product-campus">PUCP · San Miguel</p>
+          <p class="home-product-price">S/ 1,400</p>
+          <p class="home-product-seller">Jorge Pérez · 4.9 · 18 calificaciones</p>
+          <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Nintendo Switch — pendiente de implementación">Ver detalle</a>
+        </article>
+        <article class="home-product">
+          <div class="home-product-image">
+            <img src="assets/images/productos/audifonos-sony-wh1000xm4.jpg" width="282" height="176" alt="Audífonos negros Sony WH-1000XM4.">
+            <span class="home-badge home-badge-available">Disponible</span>
+          </div>
+          <h3>Audífonos Sony WH-1000XM4</h3>
+          <p class="home-product-category">Tecnológico · Audio</p>
+          <p class="home-product-campus">U. de Lima · Surco</p>
+          <p class="home-product-price">S/ 450</p>
+          <p class="home-product-seller">Diego Hernández · 4.7 · 28 calificaciones</p>
+          <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Audífonos Sony WH-1000XM4 — pendiente de implementación">Ver detalle</a>
+        </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="home-bottom" aria-label="Navegación móvil autenticada">
+    <ul>
+      <li><a href="#contenido" aria-current="page"><img src="assets/icons/campus.svg" width="24" height="24" alt=""><span>Inicio</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Explorar — pendiente de implementación"><img src="assets/icons/explorar.svg" width="24" height="24" alt=""><span>Explorar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Activar perfil vendedor — pendiente de implementación"><img src="assets/icons/publicar.svg" width="24" height="24" alt=""><span>Publicar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación"><img src="assets/icons/reservas.svg" width="24" height="24" alt=""><span>Reservas</span></a></li>
+    </ul>
+  </nav>
+</body>
+</html>
+
