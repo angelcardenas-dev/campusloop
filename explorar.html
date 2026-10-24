@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora artículos académicos, tecnológicos y de entretenimiento de estudiantes universitarios de Lima.">
+  <title>Explorar artículos — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page explore-page explore-catalogo">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <p id="home-pending" class="visually-hidden">Vista estática. Los controles no filtran ni ordenan el catálogo todavía. Limpiar filtros solo restablece controles locales. Búsqueda, reintento, detalle, Publicar, Reservas, Notificaciones y Mi cuenta están pendientes. No se envían datos ni se garantiza conservar búsquedas entre páginas.</p>
+  <header class="home-header page-width">
+    <a class="brand home-brand" href="inicio.html" aria-label="CampusLoop, Inicio"><img src="assets/icons/campus-32.svg" width="32" height="32" alt="">CampusLoop</a>
+    <nav class="home-primary" aria-label="Navegación principal autenticada">
+      <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="explorar.html" aria-current="page">Explorar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Publicar / Activar perfil vendedor — pendiente de implementación">Publicar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación">Reservas</a></li>
+      </ul>
+    </nav>
+    <div class="home-search" role="search" aria-label="Búsqueda de artículos pendiente">
+      <img src="assets/icons/explorar-20.svg" width="20" height="20" alt=""><label class="visually-hidden" for="home-search">Buscar artículos</label><input id="home-search" type="search" placeholder="Buscar artículos..." readonly aria-disabled="true" aria-describedby="home-pending" title="Búsqueda pendiente de implementación">
+    </div>
+    <a class="home-notifications" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Notificaciones, pendiente" title="Notificaciones — pendiente de implementación"><img src="assets/icons/campana.svg" width="24" height="24" alt=""></a>
+    <a class="home-avatar" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Mi cuenta de María López, pendiente" title="Mi cuenta — pendiente de implementación"><img src="assets/images/avatares/maria-lopez.jpg" width="40" height="40" alt=""></a>
+  </header>
+
+  <div class="home-viewport" role="region" aria-label="Contenido desplazable de Explorar" tabindex="0">
+    <main id="contenido" class="explore-main page-width" tabindex="-1">
+      <div class="explore-heading">
+        <div class="explore-heading-copy"><h1>Explorar artículos</h1><p>Encuentra artículos publicados por estudiantes verificados de Lima.</p></div>
+        <div class="auth-field explore-desktop-sort"><label for="orden-desktop">Ordenar por</label><select id="orden-desktop" class="auth-control explore-select" aria-label="Ordenar artículos" aria-describedby="home-pending" title="Ordenamiento pendiente de implementación"><option>Más recientes</option></select></div>
+      </div>
+
+      <div class="auth-field explore-mobile-search"><label for="buscar-articulos">Buscar artículos</label><input class="auth-control" id="buscar-articulos" type="search" placeholder="Artículos, categorías o palabras clave" aria-describedby="home-pending"></div>
+      <div class="explore-mobile-controls">
+        <a class="button button-outline explore-open-filters" href="explorar-filtros.html">Filtros</a>
+        <select id="orden-mobile" class="button button-outline explore-select" aria-label="Ordenar artículos" aria-describedby="home-pending" title="Ordenamiento pendiente de implementación"><option>Más recientes</option></select>
+      </div>
+
+      <div class="explore-layout">
+        <aside class="explore-sidebar" aria-label="Filtros de artículos">
+      <form class="explore-filter-form panel" id="filtros-catalogo" method="post" novalidate aria-describedby="home-pending">
+        <h2>Filtros</h2>
+        <fieldset>
+          <legend>Categoría</legend>
+          <label class="auth-remember explore-option" for="categoria-0"><input id="categoria-0" type="checkbox"><span>Académico</span></label>
+          <label class="auth-remember explore-option" for="categoria-1"><input id="categoria-1" type="checkbox"><span>Tecnológico</span></label>
+          <label class="auth-remember explore-option" for="categoria-2"><input id="categoria-2" type="checkbox"><span>Entretenimiento</span></label>
+        </fieldset>
+        <div class="auth-field"><label for="universidad">Universidad / campus</label><select class="auth-control explore-select" id="universidad"><option value="">Todas las universidades</option><option>PUCP · San Miguel</option><option>UPC · Monterrico</option><option>UNMSM · Campus Central</option><option>U. de Lima · Surco</option></select></div>
+        <fieldset>
+          <legend>Estado del producto</legend>
+          <label class="auth-remember explore-option" for="estado-0"><input id="estado-0" type="checkbox"><span>Disponible</span></label>
+          <label class="auth-remember explore-option" for="estado-1"><input id="estado-1" type="checkbox"><span>Reservado</span></label>
+          <label class="auth-remember explore-option" for="estado-2"><input id="estado-2" type="checkbox"><span>Vendido</span></label>
+        </fieldset>
+        <div class="auth-field"><label for="precio-minimo">Precio mínimo (S/)</label><input class="auth-control" id="precio-minimo" type="number" inputmode="decimal" min="0" value="0"></div>
+        <div class="auth-field"><label for="precio-maximo">Precio máximo (S/)</label><input class="auth-control" id="precio-maximo" type="number" inputmode="decimal" min="0" value="3000"></div>
+        <fieldset>
+          <legend>Condición</legend>
+          <label class="auth-remember explore-option" for="condicion-0"><input id="condicion-0" type="checkbox"><span>Nuevo</span></label>
+          <label class="auth-remember explore-option" for="condicion-1"><input id="condicion-1" type="checkbox"><span>Como nuevo</span></label>
+          <label class="auth-remember explore-option" for="condicion-2"><input id="condicion-2" type="checkbox"><span>Buen estado</span></label>
+          <label class="auth-remember explore-option" for="condicion-3"><input id="condicion-3" type="checkbox"><span>Usado</span></label>
+        </fieldset>
+        <button class="button button-outline" type="reset">Limpiar filtros</button>
+        <button class="button button-primary explore-apply" type="button" aria-disabled="true" aria-describedby="home-pending" title="Aplicar filtros — pendiente de implementación">Aplicar filtros</button>
+      </form>
+        </aside>
+        <section class="explore-results" aria-label="Resultados de artículos">
+        <p class="explore-count">Mostrando 8 de 8 artículos</p>
+        <div class="explore-products">
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/macbook-air-m1.jpg" width="216" height="176" alt="Laptop MacBook Air abierta."><span class="home-badge home-badge-available explore-badge-available">Disponible</span></div>
+            <h3>MacBook Air M1 256 GB</h3>
+            <p class="home-product-category">Tecnológico · Laptops</p>
+            <p class="home-product-campus">PUCP · San Miguel</p>
+            <p class="home-product-price">S/ 2,400</p>
+            <p class="home-product-seller">Carlos Pérez · 4.8 · 32 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de MacBook Air M1 256 GB — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/calculadora-casio-fx991ex.jpg" width="216" height="176" alt="Calculadora científica Casio FX-991EX."><span class="home-badge home-badge-available explore-badge-available">Disponible</span></div>
+            <h3>Calculadora Casio <span class="explore-model">FX-991EX</span></h3>
+            <p class="home-product-category">Académico · Calculadoras</p>
+            <p class="home-product-campus">UPC · Monterrico</p>
+            <p class="home-product-price">S/ 80</p>
+            <p class="home-product-seller">Ana Torres · 4.8 · 18 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Calculadora Casio FX-991EX — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/libro-calculo-stewart.jpg" width="216" height="176" alt="Libro de Cálculo Stewart."><span class="home-badge home-badge-available explore-badge-sold">Vendido</span></div>
+            <h3>Libro de Cálculo Stewart</h3>
+            <p class="home-product-category">Académico · Libros</p>
+            <p class="home-product-campus">UNMSM · Campus Central</p>
+            <p class="home-product-price">S/ 120</p>
+            <p class="home-product-seller">Sofía Ramírez · 4.9 · 12 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Libro de Cálculo Stewart — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/audifonos-sony-wh1000xm4.jpg" width="216" height="176" alt="Audífonos negros Sony WH-1000XM4."><span class="home-badge home-badge-available explore-badge-available">Disponible</span></div>
+            <h3>Audífonos Sony <span class="explore-model">WH-1000XM4</span></h3>
+            <p class="home-product-category">Tecnológico · Audio</p>
+            <p class="home-product-campus">U. de Lima · Surco</p>
+            <p class="home-product-price">S/ 450</p>
+            <p class="home-product-seller">Diego Hernández · 4.7 · 28 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Audífonos Sony WH-1000XM4 — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/nintendo-switch.jpg" width="216" height="176" alt="Nintendo Switch con mandos de colores."><span class="home-badge home-badge-available explore-badge-available">Disponible</span></div>
+            <h3>Nintendo Switch</h3>
+            <p class="home-product-category">Entretenimiento · Consolas</p>
+            <p class="home-product-campus">PUCP · San Miguel</p>
+            <p class="home-product-price">S/ 1,400</p>
+            <p class="home-product-seller">Jorge Pérez · 4.9 · 18 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Nintendo Switch — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/ipad-air.jpg" width="216" height="176" alt="Tablet iPad Air."><span class="home-badge home-badge-available explore-badge-reserved">Reservado</span></div>
+            <h3>iPad Air 5ta generación</h3>
+            <p class="home-product-category">Tecnológico · Tablets</p>
+            <p class="home-product-campus">PUCP · San Miguel</p>
+            <p class="home-product-price">S/ 1,650</p>
+            <p class="home-product-seller">Carlos Pérez · 4.8 · 32 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de iPad Air 5ta generación — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/libro-algebra-lineal.jpg" width="216" height="176" alt="Libro de Álgebra Lineal."><span class="home-badge home-badge-available explore-badge-available">Disponible</span></div>
+            <h3>Álgebra Lineal</h3>
+            <p class="home-product-category">Académico · Libros</p>
+            <p class="home-product-campus">UPC · Monterrico</p>
+            <p class="home-product-price">S/ 45</p>
+            <p class="home-product-seller">Ana Torres · 4.8 · 18 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Álgebra Lineal — pendiente de implementación">Ver detalle</a>
+          </article>
+          <article class="home-product">
+            <div class="home-product-image"><img src="assets/images/productos/libro-fisica-universitaria.jpg" width="216" height="176" alt="Libro de Física Universitaria."><span class="home-badge home-badge-available explore-badge-available">Disponible</span></div>
+            <h3>Física Universitaria</h3>
+            <p class="home-product-category">Académico · Libros</p>
+            <p class="home-product-campus">PUCP · San Miguel</p>
+            <p class="home-product-price">S/ 50</p>
+            <p class="home-product-seller">Carlos Pérez · 4.8 · 32 calificaciones</p>
+            <a class="button button-primary" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Detalle de Física Universitaria — pendiente de implementación">Ver detalle</a>
+          </article>
+        </div>
+        <p class="explore-pagination">Página 1 de 1</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <nav class="home-bottom" aria-label="Navegación móvil autenticada">
+    <ul>
+      <li><a href="inicio.html"><img src="assets/icons/campus.svg" width="24" height="24" alt=""><span>Inicio</span></a></li>
+      <li><a href="explorar.html" aria-current="page"><img src="assets/icons/explorar.svg" width="24" height="24" alt=""><span>Explorar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Activar perfil vendedor — pendiente de implementación"><img src="assets/icons/publicar.svg" width="24" height="24" alt=""><span>Publicar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación"><img src="assets/icons/reservas.svg" width="24" height="24" alt=""><span>Reservas</span></a></li>
+    </ul>
+  </nav>
+</body>
+</html>
+

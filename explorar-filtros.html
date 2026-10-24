@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtros de artículos — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="explore-filter-page">
+  <a class="skip-link" href="#contenido">Saltar a los filtros</a>
+  <p id="home-pending" class="visually-hidden">Representación estática del panel de filtros Mobile. Los controles se pueden editar y restablecer, pero Aplicar filtros no cambia los resultados ni envía datos. Cerrar filtros regresa al catálogo de ejemplo sin conservar la selección.</p>
+  <main id="contenido" class="explore-filter-main" tabindex="-1">
+    <a class="explore-close" href="explorar.html">Cerrar filtros ×</a>
+      <form class="explore-filter-form panel" id="filtros-catalogo" method="post" novalidate aria-describedby="home-pending">
+        <h2>Filtros</h2>
+        <fieldset>
+          <legend>Categoría</legend>
+          <label class="auth-remember explore-option" for="categoria-0"><input id="categoria-0" type="checkbox"><span>Académico</span></label>
+          <label class="auth-remember explore-option" for="categoria-1"><input id="categoria-1" type="checkbox"><span>Tecnológico</span></label>
+          <label class="auth-remember explore-option" for="categoria-2"><input id="categoria-2" type="checkbox"><span>Entretenimiento</span></label>
+        </fieldset>
+        <div class="auth-field"><label for="universidad">Universidad / campus</label><select class="auth-control explore-select" id="universidad"><option value="">Todas las universidades</option><option>PUCP · San Miguel</option><option>UPC · Monterrico</option><option>UNMSM · Campus Central</option><option>U. de Lima · Surco</option></select></div>
+        <fieldset>
+          <legend>Estado del producto</legend>
+          <label class="auth-remember explore-option" for="estado-0"><input id="estado-0" type="checkbox"><span>Disponible</span></label>
+          <label class="auth-remember explore-option" for="estado-1"><input id="estado-1" type="checkbox"><span>Reservado</span></label>
+          <label class="auth-remember explore-option" for="estado-2"><input id="estado-2" type="checkbox"><span>Vendido</span></label>
+        </fieldset>
+        <div class="auth-field"><label for="precio-minimo">Precio mínimo (S/)</label><input class="auth-control" id="precio-minimo" type="number" inputmode="decimal" min="0" value="0"></div>
+        <div class="auth-field"><label for="precio-maximo">Precio máximo (S/)</label><input class="auth-control" id="precio-maximo" type="number" inputmode="decimal" min="0" value="3000"></div>
+        <fieldset>
+          <legend>Condición</legend>
+          <label class="auth-remember explore-option" for="condicion-0"><input id="condicion-0" type="checkbox"><span>Nuevo</span></label>
+          <label class="auth-remember explore-option" for="condicion-1"><input id="condicion-1" type="checkbox"><span>Como nuevo</span></label>
+          <label class="auth-remember explore-option" for="condicion-2"><input id="condicion-2" type="checkbox"><span>Buen estado</span></label>
+          <label class="auth-remember explore-option" for="condicion-3"><input id="condicion-3" type="checkbox"><span>Usado</span></label>
+        </fieldset>
+        <button class="button button-outline" type="reset">Limpiar filtros</button>
+        <button class="button button-primary explore-apply" type="button" aria-disabled="true" aria-describedby="home-pending" title="Aplicar filtros — pendiente de implementación">Aplicar filtros</button>
+      </form>
+  </main>
+</body>
+</html>
+
