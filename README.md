@@ -4,22 +4,24 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2** y el **Inicio de sesión V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2** y el **Registro V2**, en Desktop y Mobile. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
 - [Login Desktop · 278:2880](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2880): 1440 × 890 px.
 - [Login Mobile · 278:2921](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2921): 390 × 746 px.
+- [Registro Desktop · 278:2946](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2946): 1440 × 1125 px.
+- [Registro Mobile · 278:3001](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3001): 390 × 1249 px.
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras nueve pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Las otras ocho pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
 
 ## Tecnologías y límites del curso
 
 HTML5 semántico y CSS puro, sin compilación ni dependencias de ejecución. Se usan flujo normal, Box Model, inline-block, vertical-align, márgenes, padding, bordes y media queries. No se utilizan JavaScript, Flexbox, Grid ni frameworks.
 
-El menú Mobile de la Landing utiliza anclas y la pseudoclase CSS :target. Los enlaces internos recorren secciones existentes; Inicio de sesión lleva a login.html. Las acciones hacia pantallas aún no implementadas conservan el aspecto del diseño, están marcadas con aria-disabled y no apuntan a archivos inexistentes. No se simulan autenticación, mensajes, pagos ni reservas.
+El menú Mobile de la Landing utiliza anclas y la pseudoclase CSS :target. Los enlaces internos recorren secciones existentes; Inicio de sesión lleva a login.html y Registrarse / Crear cuenta llevan a registro.html. Las acciones hacia pantallas aún no implementadas conservan el aspecto del diseño, están marcadas con aria-disabled y no apuntan a archivos inexistentes. No se simulan autenticación, creación de cuentas, mensajes, pagos ni reservas.
 
 ## Organización
 
@@ -29,6 +31,7 @@ CampusLoop/
 ├── README.md
 ├── index.html
 ├── login.html
+├── registro.html
 ├── css/
 │   └── styles.css
 └── assets/
@@ -53,7 +56,7 @@ Inter se sirve localmente. Su licencia SIL Open Font License se conserva en asse
 
 1. Abrir esta carpeta en Visual Studio Code.
 2. Habilitar la extensión Live Server de Ritwick Dey.
-3. Hacer clic derecho en index.html y seleccionar **Open with Live Server**. Usar **Iniciar sesión** para abrir login.html, o abrir ese archivo directamente con la extensión.
+3. Hacer clic derecho en index.html y seleccionar **Open with Live Server**. Usar **Iniciar sesión** o **Registrarse** para recorrer las pantallas, o abrir login.html / registro.html directamente con la extensión.
 4. Revisar a 1440 y 390 px de ancho, con zoom del navegador al 100 %.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
@@ -76,7 +79,16 @@ No hace falta npm install ni un proceso de compilación. También puede abrirse 
 - Las clases auth- aíslan los estilos del Login. Se reutilizan Inter, las variables de color, brand y button, junto con la fotografía de la biblioteca, el fondo de ondas y el SVG de CampusLoop existentes.
 - form organiza los controles con label, type="email", type="password" y autocomplete. Los espacios se definen con márgenes y padding; border-box incluye el borde en el ancho de los campos.
 - Ingresar es un botón type="button" sin acción. El formulario declara method="post", no contiene controles con name ni botones de envío. No se transmiten credenciales al pulsar el botón o Enter.
-- Recuperar contraseña y Crear cuenta son opciones pendientes, identificadas mediante title y una descripción accesible. No enlazan a páginas inexistentes. Recordarme solo cambia la casilla; no guarda preferencias ni crea sesiones.
+- Recuperar contraseña sigue pendiente, identificado mediante title y una descripción accesible. Crear cuenta abre registro.html. Recordarme solo cambia la casilla; no guarda preferencias ni crea sesiones.
+
+## Cómo está construido el Registro
+
+- Reutiliza la composición auth- del Login: dos paneles con inline-block en Desktop y una tarjeta con fotografía en Mobile, sin navegación pública ni autenticada.
+- form contiene seis campos etiquetados: nombre, universidad, campus, correo, contraseña y confirmación. Usa autocomplete apropiado y relaciona la ayuda de contraseña con su control mediante aria-describedby.
+- La universidad y el campus se representan como campos de texto, tal como aparecen en los frames finales; no se agrega un catálogo ni un selector dependiente.
+- Solo se añaden estilos auth-hint, auth-terms y auth-info para la ayuda, la aceptación de términos y la información de cuenta de estudiante. Las reglas anteriores de Landing y Login permanecen intactas.
+- Crear cuenta es type="button" sin acción; el formulario usa method="post", sin controles name ni botones submit. No envía datos, valida contraseñas, verifica correo ni crea cuentas. La casilla de términos no registra consentimiento.
+- Desde Registro se puede volver a index.html o a login.html. Todos los accesos de registro de Landing y Login llevan a registro.html.
 
 ## Comprobaciones realizadas
 
@@ -92,6 +104,8 @@ Revisión del 23/10/2026:
 - Navegación Landing → Login → Landing comprobada en Desktop y Mobile. Las capturas de la Landing antes y después de actualizar sus enlaces coinciden píxel por píxel.
 
 Las diferencias de suavizado de texto entre Figma y el navegador pueden producir pequeñas variaciones de píxeles. Las acciones de las demás pantallas siguen pendientes de implementación.
+
+Revisión de Registro del 24/10/2026: Live Server y Chrome a 1440 × 1125 y 390 × 1249 px; recursos locales cargados, campos alineados y sin desplazamiento horizontal en los seis anchos probados. Navegación entre las tres páginas, teclado, foco y acceso a acciones mediante desplazamiento comprobados. Pulsar Crear cuenta o Enter en cualquiera de los seis campos no genera peticiones. Las capturas de Landing y Login antes/después coinciden píxel por píxel. Capturas, comparación y resultados guardados fuera del repositorio en Evidencias_Figma_V2/Documentacion/Implementacion_Registro_2026-10-24.
 
 ## Evidencias y material académico
 
@@ -111,4 +125,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/login. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/registro. No se han realizado commits ni pushes de esta revisión.

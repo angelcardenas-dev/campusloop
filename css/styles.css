@@ -435,3 +435,20 @@ h2 { font-size: 28px; font-weight: 700; line-height: 36px; }
   .auth-recovery { display: block; width: 100%; margin: 12px 0 0; }
   .auth-register { white-space: normal; }
 }
+
+/* Registro V2: Desktop 278:2946 y Mobile 278:3001.
+   La composición, los campos y el botón reutilizan las clases auth- del Login. */
+.auth-hint { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 18px; }
+.auth-terms {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  font-size: 0;
+  line-height: 0;
+  white-space: normal;
+}
+.auth-terms input { margin-right: 8px; }
+.auth-terms span { width: calc(100% - 26px); }
+.auth-info { margin-top: 16px; padding: 16px; border-radius: 8px; background: var(--brand-light); }
+.auth-info h2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.auth-info p { margin-top: 8px; font-size: 13px; line-height: 18px; }
