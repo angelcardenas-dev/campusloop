@@ -573,3 +573,72 @@ h2 { font-size: 28px; font-weight: 700; line-height: 36px; }
   .home-metric { padding-right: 8px; padding-left: 8px; }
   .home-product { overflow-wrap: break-word; }
 }
+
+/* Explorar V2: reutiliza cabecera, barra Mobile, tarjetas y controles existentes. */
+.explore-main { padding: 40px 80px 48px; }
+.explore-heading { font-size: 0; }
+.explore-heading-copy { display: inline-block; vertical-align: top; width: calc(100% - 280px); margin-right: 24px; }
+.explore-heading h1 { margin: 0; font-size: 40px; line-height: 48px; }
+.explore-heading-copy p { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 24px; }
+.explore-desktop-sort { display: inline-block; vertical-align: top; width: 256px; }
+.explore-select { appearance: none; font-family: inherit; }
+.explore-layout { margin-top: 32px; font-size: 0; }
+.explore-sidebar { display: inline-block; vertical-align: top; width: 240px; margin-right: 24px; }
+.explore-filter-form { padding: 16px; background: var(--surface); }
+/* Los hijos ocupan el ancho de contenido de Figma: 208 px en Desktop. */
+.explore-filter-form > * { width: calc(100% + 2px); }
+.explore-filter-form > * + *, .explore-filter-form > .auth-field { margin-top: 20px; }
+.explore-filter-form h2 { font-size: 20px; font-weight: 600; line-height: 28px; }
+.explore-filter-form fieldset { min-width: 0; margin-right: 0; margin-left: 0; padding: 0; border: 0; }
+.explore-filter-form legend { padding: 0; font-size: 14px; font-weight: 600; line-height: 20px; }
+.explore-option { display: block; width: 100%; margin-top: 20px; font-size: 0; line-height: 0; }
+.explore-option input { width: 16px; height: 16px; margin-right: 8px; }
+.explore-option input:checked::after { font-size: 12px; line-height: 14px; }
+.explore-option span { width: calc(100% - 24px); font-size: 14px; line-height: 20px; }
+.explore-filter-form button, .explore-state-action { font-family: inherit; }
+.explore-filter-form [type=number] { appearance: textfield; }
+.explore-filter-form [type=number]::-webkit-inner-spin-button, .explore-filter-form [type=number]::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.explore-filter-form button:focus-visible, .explore-state-action:focus-visible, .explore-select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.explore-results { display: inline-block; vertical-align: top; width: calc(100% - 264px); }
+.explore-results > * + * { margin-top: 16px; }
+.explore-count { color: var(--muted); font-size: 14px; line-height: 20px; }
+.explore-products { font-size: 0; }
+.explore-model { white-space: nowrap; }
+.explore-products .home-product:nth-child(4n+1) { margin-left: 0; }
+.explore-products .home-product:nth-child(n+5) { margin-top: 16px; }
+.explore-badge-sold { background: #f3f4f6; }
+.explore-badge-reserved { background: #fff7e6; }
+.explore-pagination { color: var(--muted); font-size: 12px; line-height: 18px; }
+.explore-alert:first-child { margin-top: 0; }
+.explore-alert-error { background: #fef2f2; }
+.explore-alert-error p { color: var(--muted); }
+.explore-state-action { display: block; width: 240px; max-width: 100%; }
+.explore-mobile-search, .explore-mobile-controls { display: none; }
+
+/* Vista estática del panel temporal Mobile, frame 297:1193. */
+.explore-filter-page { background: var(--page); }
+.explore-filter-main { width: 100%; max-width: 390px; margin: 0 auto; padding: 16px 16px 32px; }
+.explore-close { display: block; color: var(--brand); font-size: 16px; font-weight: 600; line-height: 23px; }
+.explore-filter-main > .explore-filter-form { margin-top: 24px; }
+
+@media (min-width: 1101px) and (max-width: 1399px) {
+  .explore-main { padding-right: 32px; padding-left: 32px; }
+}
+
+@media (max-width: 1100px) {
+  .explore-main { padding: 24px 16px 32px; }
+  .explore-heading-copy { display: block; width: 100%; margin-right: 0; }
+  .explore-heading h1 { font-size: 28px; line-height: 36px; }
+  .explore-heading-copy p { font-size: 14px; line-height: 20px; }
+  .explore-desktop-sort, .explore-sidebar { display: none; }
+  .explore-mobile-search, .explore-mobile-controls { display: block; margin-top: 24px; }
+  .explore-mobile-controls { font-size: 0; }
+  .explore-mobile-controls > * { display: inline-block; vertical-align: top; width: calc((100% - 16px) / 2); }
+  .explore-mobile-controls > * + * { margin-left: 16px; }
+  .explore-mobile-controls select { text-align: center; }
+  .explore-layout { margin-top: 24px; }
+  .explore-results { display: block; width: 100%; }
+  .explore-products .home-product:nth-child(odd) { margin-left: 0; }
+  .explore-products .home-product:nth-child(n+3) { margin-top: 16px; }
+  .explore-error .explore-state-action { margin-right: auto; margin-left: auto; }
+}

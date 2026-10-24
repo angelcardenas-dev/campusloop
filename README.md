@@ -4,7 +4,7 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2** y el **Inicio autenticado V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2** y **Explorar artículos V2**, en Desktop y Mobile. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
@@ -14,10 +14,12 @@ Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el
 - [Registro Mobile · 278:3001](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3001): 390 × 1249 px.
 - [Inicio Desktop · 278:3030](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3030): 1440 × 1375 px.
 - [Inicio Mobile · 278:3115](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3115): 390 × 844 px, con contenido desplazable.
+- [Explorar Desktop · 278:3154](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3154): 1440 × 1286 px.
+- [Explorar Mobile · 278:3437](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3437): 390 × 844 px, con contenido desplazable.
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras siete pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Las otras seis pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
 
 ## Tecnologías y límites del curso
 
@@ -37,6 +39,10 @@ CampusLoop/
 ├── inicio.html                   # Comprador sin perfil vendedor activo
 ├── inicio-vendedor.html          # Variante estática: vendedor activo
 ├── inicio-nuevo.html             # Variante estática: usuario nuevo
+├── explorar.html                 # Catálogo estático de ocho artículos
+├── explorar-vacio.html           # Variante estática: sin resultados
+├── explorar-error.html           # Variante estática: error de carga
+├── explorar-filtros.html         # Panel de filtros Mobile, sin envío
 ├── css/
 │   └── styles.css
 └── assets/
@@ -65,6 +71,8 @@ Inter se sirve localmente. Su licencia SIL Open Font License se conserva en asse
 4. Revisar a 1440 y 390 px de ancho, con zoom del navegador al 100 %.
 
 Para revisar Inicio, abrir inicio.html con Live Server. Las variantes se abren directamente desde inicio-vendedor.html e inicio-nuevo.html. No se enlazan desde Ingresar: todavía no existe autenticación real.
+
+Para revisar Explorar, abrir explorar.html o usar los enlaces Explorar de Inicio y el botón Explorar artículos de la Landing. Las variantes vacía y de error se abren directamente desde explorar-vacio.html y explorar-error.html; no son resultados reales de una búsqueda. En Mobile, Filtros abre explorar-filtros.html y Cerrar filtros regresa al catálogo.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
 
@@ -116,6 +124,25 @@ Las tres vistas representan estados de ejemplo independientes; no cambian roles 
 - Las acciones pendientes no tienen href y se identifican con title, aria-disabled y descripción accesible. La búsqueda es de solo lectura. No se simulan mensajes, reservas, publicaciones, notificaciones ni acceso real a Mi cuenta.
 - Los nombres, precios y fechas son datos estáticos del diseño. La entrega del 23/10/2026 se conserva como ejemplo de Figma; no se calcula una próxima entrega real.
 
+## Cómo está construido Explorar
+
+| Archivo | Variante | Figma Desktop | Figma Mobile |
+| --- | --- | --- | --- |
+| [explorar.html](explorar.html) | Catálogo de ocho artículos | [278:3154](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3154) | [278:3437](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3437) |
+| [explorar-vacio.html](explorar-vacio.html) | Sin resultados | [296:756](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=296-756) | [297:768](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=297-768) |
+| [explorar-error.html](explorar-error.html) | Error de carga | [296:850](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=296-850) | [297:826](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=297-826) |
+| [explorar-filtros.html](explorar-filtros.html) | Panel de filtros Mobile | No existe variante Desktop independiente | [297:1193](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=297-1193) |
+
+- Reutiliza la cabecera y navegación home-, las tarjetas home-product, button, panel, auth-field, auth-control y auth-info. Explorar queda activo; Mi cuenta conserva su acceso desde el avatar. Las reglas explore- se añaden al final de styles.css y no alteran las pantallas anteriores.
+- main contiene la presentación y una sección de resultados con ocho article. aside agrupa los filtros Desktop en un form con fieldset y legend. Cada control tiene label o nombre accesible.
+- inline-block y vertical-align colocan el filtro de 240 px junto a los resultados, con cuatro tarjetas por fila en Desktop y dos en Mobile. border-box, calc, padding, márgenes y min-height reproducen las medidas del diseño. No se usan Flexbox ni Grid.
+- Se reutilizan ocho fotografías de productos, el avatar de María, siete SVG e Inter locales. Los precios, vendedores, campus y estados Disponible, Reservado y Vendido reproducen los datos de Figma. No se descargaron recursos nuevos.
+- En Mobile, la cabecera y la barra inferior permanecen en el flujo normal, fuera de home-viewport. El área central se desplaza y deja accesibles las últimas tarjetas y sus botones.
+- Los filtros ofrecen casillas, selectores y precios numéricos nativos. Limpiar filtros solo restablece los controles locales; no cambia el estado vacío ni el catálogo. Aplicar filtros es type="button" sin acción, con aria-disabled. El formulario no tiene controles name ni botones submit y no envía datos.
+- El panel Mobile es una página estática independiente, como el frame de referencia sin cabecera ni barra inferior. Cerrar filtros vuelve al catálogo; todavía no se conservan las selecciones entre páginas.
+- La búsqueda y el ordenamiento no cambian los artículos. Más recientes es la única opción definida en el diseño. Reintentar no hace peticiones. La frase de Figma «Tu búsqueda se conserva» es texto del estado de ejemplo; esta etapa no almacena búsquedas ni garantiza persistencia.
+- Ver detalle, Publicar, Reservas, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio y Explorar sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
+
 ## Comprobaciones realizadas
 
 Revisión del 23/10/2026:
@@ -135,6 +162,8 @@ Revisión de Registro del 24/10/2026: Live Server y Chrome a 1440 × 1125 y 390 
 
 Revisión de Inicio del 24/10/2026: tres estados probados con Live Server y Chrome a 1440 y 390 px, además de 1280 y 320 px. Las medidas coinciden con los seis frames. Se comprobaron recursos, teclado, foco y acceso a los últimos botones mediante desplazamiento. Las capturas de Landing, Login y Registro permanecen idénticas a las anteriores; sus archivos HTML no se modificaron. Las evidencias están en Evidencias_Figma_V2/Documentacion/Implementacion_Inicio. No se ha probado en dispositivos físicos ni otros motores de navegador.
 
+Revisión de Explorar del 24/10/2026: catálogo, vacío y error probados con Live Server y Chrome a 1440, 1280, 1024, 768, 390 y 320 px; panel Mobile a 390 y 320 px. Sin desplazamiento horizontal, errores de recursos ni uso de scripts. Se comprobaron Inter, etiquetas, foco de teclado, apertura/cierre del panel, restablecimiento nativo de filtros y acceso al último botón sin superposición de la barra inferior. Se compararon las siete vistas con capturas actuales de Figma. Las capturas de las seis páginas previas permanecen idénticas; solo se habilitaron sus enlaces relacionados con Explorar. Las evidencias se guardan en Evidencias_Figma_V2/Documentacion/Implementacion_Explorar. La revisión interactiva se realizó en Chrome; otros motores y dispositivos físicos siguen pendientes.
+
 ## Evidencias y material académico
 
 Ubicación externa:
@@ -153,4 +182,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/inicio. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/explorar. No se han realizado commits ni pushes de esta revisión.

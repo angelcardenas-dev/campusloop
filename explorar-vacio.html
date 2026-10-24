@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora artículos académicos, tecnológicos y de entretenimiento de estudiantes universitarios de Lima.">
+  <title>Explorar artículos — Sin resultados — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page explore-page explore-vacio">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <p id="home-pending" class="visually-hidden">Vista estática de sin resultados. Los controles no filtran ni ordenan el catálogo todavía. Limpiar filtros solo restablece controles locales. Búsqueda, reintento, detalle, Publicar, Reservas, Notificaciones y Mi cuenta están pendientes. No se envían datos ni se garantiza conservar búsquedas entre páginas.</p>
+  <header class="home-header page-width">
+    <a class="brand home-brand" href="inicio.html" aria-label="CampusLoop, Inicio"><img src="assets/icons/campus-32.svg" width="32" height="32" alt="">CampusLoop</a>
+    <nav class="home-primary" aria-label="Navegación principal autenticada">
+      <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="explorar.html" aria-current="page">Explorar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Publicar / Activar perfil vendedor — pendiente de implementación">Publicar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación">Reservas</a></li>
+      </ul>
+    </nav>
+    <div class="home-search" role="search" aria-label="Búsqueda de artículos pendiente">
+      <img src="assets/icons/explorar-20.svg" width="20" height="20" alt=""><label class="visually-hidden" for="home-search">Buscar artículos</label><input id="home-search" type="search" placeholder="Buscar artículos..." readonly aria-disabled="true" aria-describedby="home-pending" title="Búsqueda pendiente de implementación">
+    </div>
+    <a class="home-notifications" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Notificaciones, pendiente" title="Notificaciones — pendiente de implementación"><img src="assets/icons/campana.svg" width="24" height="24" alt=""></a>
+    <a class="home-avatar" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Mi cuenta de María López, pendiente" title="Mi cuenta — pendiente de implementación"><img src="assets/images/avatares/maria-lopez.jpg" width="40" height="40" alt=""></a>
+  </header>
+
+  <div class="home-viewport" role="region" aria-label="Contenido desplazable de Explorar" tabindex="0">
+    <main id="contenido" class="explore-main page-width" tabindex="-1">
+      <div class="explore-heading">
+        <div class="explore-heading-copy"><h1>Explorar artículos</h1><p>Encuentra artículos publicados por estudiantes verificados de Lima.</p></div>
+        <div class="auth-field explore-desktop-sort"><label for="orden-desktop">Ordenar por</label><select id="orden-desktop" class="auth-control explore-select" aria-label="Ordenar artículos" aria-describedby="home-pending" title="Ordenamiento pendiente de implementación"><option>Más recientes</option></select></div>
+      </div>
+
+      <div class="auth-field explore-mobile-search"><label for="buscar-articulos">Buscar artículos</label><input class="auth-control" id="buscar-articulos" type="search" placeholder="Artículos, categorías o palabras clave" aria-describedby="home-pending"></div>
+      <div class="explore-mobile-controls">
+        <a class="button button-outline explore-open-filters" href="explorar-filtros.html">Filtros</a>
+        <select id="orden-mobile" class="button button-outline explore-select" aria-label="Ordenar artículos" aria-describedby="home-pending" title="Ordenamiento pendiente de implementación"><option>Más recientes</option></select>
+      </div>
+
+      <div class="explore-layout">
+        <aside class="explore-sidebar" aria-label="Filtros de artículos">
+      <form class="explore-filter-form panel" id="filtros-catalogo" method="post" novalidate aria-describedby="home-pending">
+        <h2>Filtros</h2>
+        <fieldset>
+          <legend>Categoría</legend>
+          <label class="auth-remember explore-option" for="categoria-0"><input id="categoria-0" type="checkbox"><span>Académico</span></label>
+          <label class="auth-remember explore-option" for="categoria-1"><input id="categoria-1" type="checkbox"><span>Tecnológico</span></label>
+          <label class="auth-remember explore-option" for="categoria-2"><input id="categoria-2" type="checkbox"><span>Entretenimiento</span></label>
+        </fieldset>
+        <div class="auth-field"><label for="universidad">Universidad / campus</label><select class="auth-control explore-select" id="universidad"><option value="">Todas las universidades</option><option>PUCP · San Miguel</option><option>UPC · Monterrico</option><option>UNMSM · Campus Central</option><option>U. de Lima · Surco</option></select></div>
+        <fieldset>
+          <legend>Estado del producto</legend>
+          <label class="auth-remember explore-option" for="estado-0"><input id="estado-0" type="checkbox"><span>Disponible</span></label>
+          <label class="auth-remember explore-option" for="estado-1"><input id="estado-1" type="checkbox"><span>Reservado</span></label>
+          <label class="auth-remember explore-option" for="estado-2"><input id="estado-2" type="checkbox"><span>Vendido</span></label>
+        </fieldset>
+        <div class="auth-field"><label for="precio-minimo">Precio mínimo (S/)</label><input class="auth-control" id="precio-minimo" type="number" inputmode="decimal" min="0" value="0"></div>
+        <div class="auth-field"><label for="precio-maximo">Precio máximo (S/)</label><input class="auth-control" id="precio-maximo" type="number" inputmode="decimal" min="0" value="3000"></div>
+        <fieldset>
+          <legend>Condición</legend>
+          <label class="auth-remember explore-option" for="condicion-0"><input id="condicion-0" type="checkbox"><span>Nuevo</span></label>
+          <label class="auth-remember explore-option" for="condicion-1"><input id="condicion-1" type="checkbox"><span>Como nuevo</span></label>
+          <label class="auth-remember explore-option" for="condicion-2"><input id="condicion-2" type="checkbox"><span>Buen estado</span></label>
+          <label class="auth-remember explore-option" for="condicion-3"><input id="condicion-3" type="checkbox"><span>Usado</span></label>
+        </fieldset>
+        <button class="button button-outline" type="reset">Limpiar filtros</button>
+        <button class="button button-primary explore-apply" type="button" aria-disabled="true" aria-describedby="home-pending" title="Aplicar filtros — pendiente de implementación">Aplicar filtros</button>
+      </form>
+        </aside>
+        <section class="explore-results" aria-label="Resultados de artículos">
+        <p class="explore-count">0 artículos</p>
+        <div class="auth-info explore-alert"><h2>No encontramos artículos</h2><p>Prueba con otra búsqueda o elimina algunos filtros.</p></div>
+        <button class="button button-outline explore-state-action" type="reset" form="filtros-catalogo" aria-describedby="home-pending">Limpiar filtros</button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <nav class="home-bottom" aria-label="Navegación móvil autenticada">
+    <ul>
+      <li><a href="inicio.html"><img src="assets/icons/campus.svg" width="24" height="24" alt=""><span>Inicio</span></a></li>
+      <li><a href="explorar.html" aria-current="page"><img src="assets/icons/explorar.svg" width="24" height="24" alt=""><span>Explorar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Activar perfil vendedor — pendiente de implementación"><img src="assets/icons/publicar.svg" width="24" height="24" alt=""><span>Publicar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación"><img src="assets/icons/reservas.svg" width="24" height="24" alt=""><span>Reservas</span></a></li>
+    </ul>
+  </nav>
+</body>
+</html>
+
