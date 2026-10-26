@@ -4,7 +4,7 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2** y **Explorar artículos V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2** y **Detalle de artículo V2**, en Desktop y Mobile. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
@@ -16,10 +16,12 @@ Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el
 - [Inicio Mobile · 278:3115](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3115): 390 × 844 px, con contenido desplazable.
 - [Explorar Desktop · 278:3154](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3154): 1440 × 1286 px.
 - [Explorar Mobile · 278:3437](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3437): 390 × 844 px, con contenido desplazable.
+- [Detalle Desktop · 278:3486](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3486): 1440 × 1474 px.
+- [Detalle Mobile · 278:3554](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3554): 390 × 844 px, con contenido desplazable.
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras seis pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Las otras cinco pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
 
 ## Tecnologías y límites del curso
 
@@ -43,6 +45,9 @@ CampusLoop/
 ├── explorar-vacio.html           # Variante estática: sin resultados
 ├── explorar-error.html           # Variante estática: error de carga
 ├── explorar-filtros.html         # Panel de filtros Mobile, sin envío
+├── detalle.html                  # MacBook Air M1: Disponible
+├── detalle-reservado.html        # Mismo artículo: variante estática Reservado
+├── detalle-vendido.html          # Mismo artículo: variante estática Vendido
 ├── css/
 │   └── styles.css
 └── assets/
@@ -73,6 +78,8 @@ Inter se sirve localmente. Su licencia SIL Open Font License se conserva en asse
 Para revisar Inicio, abrir inicio.html con Live Server. Las variantes se abren directamente desde inicio-vendedor.html e inicio-nuevo.html. No se enlazan desde Ingresar: todavía no existe autenticación real.
 
 Para revisar Explorar, abrir explorar.html o usar los enlaces Explorar de Inicio y el botón Explorar artículos de la Landing. Las variantes vacía y de error se abren directamente desde explorar-vacio.html y explorar-error.html; no son resultados reales de una búsqueda. En Mobile, Filtros abre explorar-filtros.html y Cerrar filtros regresa al catálogo.
+
+Para revisar Detalle, usar Ver detalle en la tarjeta de la MacBook Air M1 de explorar.html. Las otras siete tarjetas conservan su detalle pendiente. detalle-reservado.html y detalle-vendido.html se abren directamente con Live Server; son referencias estáticas del mismo producto, no el resultado de pulsar Reservar.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
 
@@ -141,7 +148,27 @@ Las tres vistas representan estados de ejemplo independientes; no cambian roles 
 - Los filtros ofrecen casillas, selectores y precios numéricos nativos. Limpiar filtros solo restablece los controles locales; no cambia el estado vacío ni el catálogo. Aplicar filtros es type="button" sin acción, con aria-disabled. El formulario no tiene controles name ni botones submit y no envía datos.
 - El panel Mobile es una página estática independiente, como el frame de referencia sin cabecera ni barra inferior. Cerrar filtros vuelve al catálogo; todavía no se conservan las selecciones entre páginas.
 - La búsqueda y el ordenamiento no cambian los artículos. Más recientes es la única opción definida en el diseño. Reintentar no hace peticiones. La frase de Figma «Tu búsqueda se conserva» es texto del estado de ejemplo; esta etapa no almacena búsquedas ni garantiza persistencia.
-- Ver detalle, Publicar, Reservas, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio y Explorar sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
+- Ver detalle de la MacBook Air M1 abre detalle.html. Los detalles de los otros siete artículos, Publicar, Reservas, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio y Explorar sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
+
+## Cómo está construido Detalle
+
+Las tres páginas representan la MacBook Air M1 256 GB de Carlos Pérez, estudiante de la PUCP, con precio S/ 2,400. No son detalles genéricos para los demás productos.
+
+| Archivo | Estado del artículo | Figma Desktop | Figma Mobile |
+| --- | --- | --- | --- |
+| [detalle.html](detalle.html) | Disponible | [278:3486](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3486) | [278:3554](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3554) |
+| [detalle-reservado.html](detalle-reservado.html) | Reservado | [296:943](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=296-943) | [297:883](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=297-883) |
+| [detalle-vendido.html](detalle-vendido.html) | Vendido | [296:1052](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=296-1052) | [297:1006](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=297-1006) |
+
+- Reutiliza home-header, home-bottom con Explorar activo, home-product, button, panel, home-badge, seller-rating, stars y auth-info. Solo añade reglas detail-; los estilos anteriores permanecen íntegros.
+- main contiene la ruta de regreso, un article del producto y una section de relacionados. figure reúne la fotografía principal y tres miniaturas; section organiza Descripción e Incluye; aside identifica al vendedor y la información de coordinación segura. time expresa la fecha de publicación y ul los accesorios incluidos.
+- En Desktop, inline-block y vertical-align alinean galería de 500 px, información de 444 px y vendedor de 288 px, separados por 24 px. calc adapta las dos primeras columnas al ancho disponible. En Mobile se apilan, con fotografía de 358 × 272 px a 390 px de pantalla.
+- border-box, padding, márgenes, radios y min-height mantienen el Box Model. El contenido fluye y puede crecer en anchos menores. La cabecera y la barra inferior reutilizan el área central desplazable de Inicio sin ocultar las últimas acciones.
+- Se reutilizan nueve imágenes existentes: galería de tres fotografías de la MacBook, avatares de María y Carlos y las cuatro fotografías de relacionados. Los ocho SVG usados incluyen las estrellas doradas y la navegación compartida. No se descargaron ni duplicaron recursos.
+- La galería es estática: las tres miniaturas se muestran como imágenes, sin cambio interactivo de la foto principal. El salto opcional wbr en calificaciones reproduce el ajuste de la reputación de Figma sin cambiar su texto.
+- En Disponible, Reservar artículo es un botón type="button" sin acción, marcado como pendiente. En Reservado y Vendido se muestra Artículo reservado / Artículo vendido con disabled y el estilo V2 correspondiente. No hay transición entre los estados al pulsar un control.
+- Contactar vendedor y Ver perfil mantienen el aspecto de Figma, con title, aria-disabled y descripción accesible, sin destinos inexistentes. Los cuatro relacionados conservan Ver detalle pendiente porque aún no existe un detalle propio para ellos.
+- El enlace de la ruta, Inicio y Explorar sí funcionan. No se crean reservas, consultas, compras, sesiones ni solicitudes a servidores. El estado del producto es distinto de los estados de una interacción; Reservado no indica una compra completada.
 
 ## Comprobaciones realizadas
 
@@ -164,6 +191,8 @@ Revisión de Inicio del 24/10/2026: tres estados probados con Live Server y Chro
 
 Revisión de Explorar del 24/10/2026: catálogo, vacío y error probados con Live Server y Chrome a 1440, 1280, 1024, 768, 390 y 320 px; panel Mobile a 390 y 320 px. Sin desplazamiento horizontal, errores de recursos ni uso de scripts. Se comprobaron Inter, etiquetas, foco de teclado, apertura/cierre del panel, restablecimiento nativo de filtros y acceso al último botón sin superposición de la barra inferior. Se compararon las siete vistas con capturas actuales de Figma. Las capturas de las seis páginas previas permanecen idénticas; solo se habilitaron sus enlaces relacionados con Explorar. Las evidencias se guardan en Evidencias_Figma_V2/Documentacion/Implementacion_Explorar. La revisión interactiva se realizó en Chrome; otros motores y dispositivos físicos siguen pendientes.
 
+Revisión de Detalle del 24/10/2026: tres estados probados con Live Server y Chrome a 1440, 1280, 1024, 768, 390 y 320 px. Las medidas de referencia coinciden con Figma: Desktop 1440 × 1474 y contenido Mobile de 2563 px dentro del frame de 390 × 844. Se comprobaron recursos, Inter, límites de texto, ausencia de desbordamiento horizontal, teclado, foco, desplazamiento y navegación Explorar → Detalle → Explorar. Solo la MacBook enlaza a detalle.html. Las veinte capturas de las diez páginas anteriores permanecen idénticas. Capturas, comparaciones e inventario de recursos se guardan en Evidencias_Figma_V2/Documentacion/Implementacion_Detalle. Otros navegadores y dispositivos físicos siguen pendientes.
+
 ## Evidencias y material académico
 
 Ubicación externa:
@@ -182,4 +211,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/explorar. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/detalle. No se han realizado commits ni pushes de esta revisión.
