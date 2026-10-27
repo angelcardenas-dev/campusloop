@@ -748,3 +748,90 @@ h2 { font-size: 28px; font-weight: 700; line-height: 36px; }
   .seller-public-products .home-product { width: calc((100% - 16px) / 2); }
   .seller-public-reviews { display: block; width: 100%; margin-top: 24px; }
 }
+
+/* Activar perfil vendedor V2. Las variantes comparten composición y componentes.
+   Dos columnas inline-block en Desktop; bloques en el flujo normal en Mobile. */
+.activate-heading h1 { margin: 0; font-size: 40px; line-height: 48px; }
+.activate-heading p { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 24px; }
+.activate-columns { font-size: 0; }
+.activate-explanation, .activate-card { display: inline-block; vertical-align: top; padding: 24px; font-size: 16px; }
+.activate-explanation { width: 456px; margin-right: 32px; background: var(--brand-light); }
+.activate-explanation > * + * { margin-top: 16px; }
+.activate-explanation h2 { color: var(--brand); font-size: 28px; font-weight: 700; line-height: 36px; }
+.activate-explanation > p { font-size: 16px; line-height: 24px; }
+.activate-status-inactive { background: #f3f4f6; }
+.activate-status-pending { background: #fff7e6; }
+.activate-status-active { background: #ecfdf3; }
+.activate-steps li + li, .activate-steps p { margin-top: 16px; }
+.activate-steps h3 { color: var(--brand); font-size: 16px; font-weight: 600; line-height: 23px; }
+.activate-steps p { font-size: 14px; line-height: 20px; }
+.activate-card { width: calc(100% - 488px); margin: 0; background: var(--surface); }
+.activate-card > * + * { margin-top: 16px; }
+/* Como las instancias V2, controles y acciones usan 2 px más que el ancho interior. */
+.activate-wide { width: calc(100% + 2px); }
+.activate-choices > p { font-size: 16px; font-weight: 600; line-height: 23px; }
+.activate-choices .button { display: block; width: 100%; margin-top: 16px; }
+.activate-card .activate-alert { padding: 16px; }
+.activate-card > .activate-alert:first-child { margin-top: 0; }
+.activate-card .activate-alert h2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.activate-alert p { color: var(--text); }
+.activate-alert-error { background: #fef2f2; }
+.activate-alert-error p, .activate-alert-warning p, .activate-alert-success p { color: var(--muted); }
+.activate-alert-warning { background: #fff7e6; }
+.activate-alert-success { background: #ecfdf3; }
+.activate-description textarea { resize: vertical; min-height: 48px; }
+.activate-upload { display: block; padding: 24px; background: var(--page); color: var(--brand); font-family: inherit; text-align: left; }
+.activate-upload > * + * { margin-top: 12px; }
+.activate-upload img, .activate-upload-title, .activate-upload-hint { display: block; }
+.activate-upload-title { font-size: 16px; font-weight: 600; line-height: 23px; }
+.activate-upload-hint, .activate-upload p { color: var(--muted); font-size: 13px; font-weight: 400; line-height: 18px; }
+.activate-attachment h3 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.activate-agreement { display: block; font-size: 0; line-height: 0; }
+.activate-agreement input { margin-right: 8px; }
+.activate-agreement input:checked::after { content: none; }
+.activate-agreement span { width: calc(100% - 26px); }
+.activate-submit, .activate-save { display: block; font-family: inherit; cursor: default; }
+.activate-upload:focus-visible, .activate-submit:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.activate-privacy { color: var(--muted); font-size: 14px; line-height: 20px; }
+.activate-static { color: var(--muted); font-size: 12px; line-height: 18px; }
+.activate-state-note { padding: 0 80px 24px; }
+
+/* El borrador es el mismo modal para las seis variantes de origen.
+   :target cambia únicamente el enlace de regreso; no almacena campos. */
+.activate-draft-page { min-height: 100vh; background: var(--page); }
+.activate-draft-main { width: 100%; max-width: 528px; margin: 0 auto; padding: 24px; }
+.activate-draft { padding: 24px; background: var(--surface); }
+.activate-draft h1 { margin: 0; font-size: 28px; line-height: 36px; }
+.activate-draft > p { margin-top: 16px; color: var(--muted); font-size: 16px; line-height: 24px; }
+.activate-draft .button { display: block; margin-top: 16px; }
+.activate-draft .activate-return { display: none; }
+.activate-draft .activate-return-inicial { display: block; }
+.activate-origin:target ~ main .activate-return { display: none; }
+#inicial:target ~ main .activate-return-inicial { display: block; }
+#experiencia:target ~ main .activate-return-experiencia { display: block; }
+#error:target ~ main .activate-return-error { display: block; }
+#listo:target ~ main .activate-return-listo { display: block; }
+#evidencia-error:target ~ main .activate-return-evidencia-error { display: block; }
+#experiencia-lista:target ~ main .activate-return-experiencia-lista { display: block; }
+.activate-draft-main > .activate-static { margin-top: 16px; }
+
+@media (min-width: 1101px) and (max-width: 1399px) {
+  .activate-explanation { width: 36%; }
+  .activate-card { width: calc(64% - 32px); }
+  .activate-state-note { padding-right: 32px; padding-left: 32px; }
+}
+@media (max-width: 1100px) {
+  .activate-heading h1 { font-size: 28px; line-height: 36px; }
+  .activate-heading p { font-size: 14px; line-height: 20px; }
+  .activate-explanation, .activate-card { display: block; width: 100%; margin-right: 0; }
+  .activate-card { margin-top: 32px; }
+  .activate-description textarea { padding-top: 3px; padding-bottom: 3px; }
+  .activate-state-note { padding-right: 16px; padding-left: 16px; }
+}
+@media (max-width: 528px) {
+  .activate-draft-main { max-width: 390px; padding: 16px; }
+}
+@media (max-width: 360px) {
+  .activate-description textarea { height: 68px; min-height: 68px; }
+  .activate-choices .button { padding-right: 8px; padding-left: 8px; }
+}

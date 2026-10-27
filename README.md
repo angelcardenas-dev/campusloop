@@ -4,7 +4,7 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2** y **Perfil público del vendedor V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2**, **Perfil público del vendedor V2** y **Activar perfil vendedor V2**, en Desktop y Mobile. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
@@ -23,7 +23,7 @@ Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras cuatro pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Las otras tres pantallas principales (Publicar, Reservas y Mi cuenta), sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
 
 ## Tecnologías y límites del curso
 
@@ -52,6 +52,15 @@ CampusLoop/
 ├── detalle-vendido.html          # Mismo artículo: variante estática Vendido
 ├── perfil-vendedor.html          # Perfil público de Carlos Pérez
 ├── perfil-vendedor-nuevo.html    # Referencia estática: María López, sin reputación previa
+├── activar-vendedor.html                  # Principiante, estado inicial
+├── activar-vendedor-experiencia.html      # Experiencia previa, evidencia pendiente
+├── activar-vendedor-error.html            # Error de aceptación de normas
+├── activar-vendedor-listo.html            # Principiante con normas aceptadas
+├── activar-vendedor-evidencia-error.html  # Error: faltan evidencia y normas
+├── activar-vendedor-experiencia-lista.html # Ejemplo con adjunto privado y normas
+├── activar-vendedor-borrador.html         # Modal estático con regreso al origen
+├── activar-vendedor-pendiente.html        # Ejemplo de solicitud en revisión
+├── activar-vendedor-activo.html           # Ejemplo de aprobación, sin reputación
 ├── css/
 │   └── styles.css
 └── assets/
@@ -86,6 +95,8 @@ Para revisar Explorar, abrir explorar.html o usar los enlaces Explorar de Inicio
 Para revisar Detalle, usar Ver detalle en la tarjeta de la MacBook Air M1 de explorar.html. Las otras siete tarjetas conservan su detalle pendiente. detalle-reservado.html y detalle-vendido.html se abren directamente con Live Server; son referencias estáticas del mismo producto, no el resultado de pulsar Reservar.
 
 Para revisar el perfil de Carlos, usar Ver perfil desde cualquiera de las tres variantes de Detalle o abrir perfil-vendedor.html. La variante de vendedor nuevo, perfil-vendedor-nuevo.html, se abre directamente con Live Server: representa a María López según Figma y no cambia de usuario ni de sesión.
+
+Para revisar Activar perfil vendedor, usar el botón con ese nombre desde inicio.html o inicio-nuevo.html, o abrir activar-vendedor.html con Live Server. Las dos opciones de experiencia navegan entre ejemplos estáticos; no conservan lo escrito. Las variantes de error, listas, pendiente y activa se abren desde los enlaces de la tabla de Activación. Enviar solicitud no navega a una confirmación ni envía datos.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
 
@@ -193,6 +204,34 @@ Las tres páginas representan la MacBook Air M1 256 GB de Carlos Pérez, estudia
 - La calificación de María se identifica como recibida por Carlos en su papel de vendedor. No se mezclan historiales de comprador. Comprador y vendedor podrán calificar de forma independiente una vez que ambos confirmen la finalización de la operación; esta entrega no implementa ese sistema ni ofrece un formulario anticipado.
 - Un perfil activo no genera reputación: la variante de María conserva Aún sin calificaciones y Sin operaciones completadas todavía. Las evidencias de experiencia previa son privadas y no se muestran ni se enlazan.
 
+## Cómo está construido Activar perfil vendedor
+
+Son nueve representaciones estáticas de los frames finales V2. No se crea una segunda cuenta, no se envían solicitudes, no se activan perfiles y no se asigna reputación.
+
+| Archivo | Variante | Figma Desktop | Figma Mobile |
+| --- | --- | --- | --- |
+| [activar-vendedor.html](activar-vendedor.html) | Principiante inicial | [278:3813](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3813) | [278:3884](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3884) |
+| [activar-vendedor-experiencia.html](activar-vendedor-experiencia.html) | Con experiencia previa | [298:2037](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=298-2037) | [299:1135](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=299-1135) |
+| [activar-vendedor-error.html](activar-vendedor-error.html) | Error: normas sin aceptar | [306:2693](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-2693) | [307:3300](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3300) |
+| [activar-vendedor-listo.html](activar-vendedor-listo.html) | Principiante listo | [306:2756](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-2756) | [307:3376](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3376) |
+| [activar-vendedor-evidencia-error.html](activar-vendedor-evidencia-error.html) | Error: falta evidencia y normas | [306:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-2816) | [307:3449](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3449) |
+| [activar-vendedor-experiencia-lista.html](activar-vendedor-experiencia-lista.html) | Experiencia lista, adjunto de ejemplo | [306:2898](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-2898) | [307:3544](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3544) |
+| [activar-vendedor-pendiente.html](activar-vendedor-pendiente.html) | Solicitud pendiente de revisión | [298:2116](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=298-2116) | [299:1227](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=299-1227) |
+| [activar-vendedor-activo.html](activar-vendedor-activo.html) | Perfil activo, sin ventas ni calificaciones | [298:2161](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=298-2161) | [299:1285](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=299-1285) |
+| [activar-vendedor-borrador.html](activar-vendedor-borrador.html) | Borrador guardado (modal) | [306:3148](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-3148) | [307:3798](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3798) |
+
+- Reutiliza home-header, home-bottom, home-viewport, button, panel, auth-field, auth-control, auth-remember, auth-info, home-badge, Inter y las variables V2. Las reglas nuevas activate- están aisladas al final de styles.css; no cambian los estilos anteriores.
+- header y nav conservan Inicio, Explorar, Publicar y Reservas, con Publicar seleccionado dentro de este módulo. Mi cuenta sigue en el avatar. main reúne la presentación y dos columnas: aside explica el proceso mediante ol, y form agrupa los campos con label. Las confirmaciones usan section y aside; el borrador se presenta como una vista independiente del modal.
+- inline-block y vertical-align alinean la explicación de 456 px con el formulario de 792 px, separados por 32 px a 1440 px. border-box, padding de 24 px, márgenes de 16 px y controles de 48 px reproducen el Box Model de Figma. En Mobile se apilan en el flujo normal. El área home-viewport se desplaza entre la cabecera de 72 px y la barra de 80 px sin ocultar las últimas acciones.
+- Las opciones Primera vez / Tengo experiencia son enlaces entre las dos vistas de ejemplo, como las acciones del diseño. No cambian roles ni ejecutan validación. Las casillas son controles nativos; los estados de error y las variantes listas se muestran independientemente, no se calculan al editar.
+- El principiante solo muestra universidad/campus y aceptación de normas, sin solicitar evidencia. Con experiencia se muestran categorías, antigüedad, descripción, evidencia y referencias. La descripción usa textarea; se permite ajustar su altura y crece a 320 px para mantener legible el texto de ejemplo. Las evidencias se identifican como privadas, sin enlaces públicos ni un archivo real adjunto.
+- Se reutilizan el avatar de María, ocho SVG existentes e Inter local. El avatar se verificó contra el hash del relleno de los 16 frames con cabecera. No se descargaron recursos ni se añadió una fotografía decorativa.
+- Enviar solicitud es type="button" sin acción y con aria-disabled. Los formularios usan method="post", carecen de controles name y tienen un submit oculto deshabilitado para bloquear el envío implícito con Enter, incluso en la variante de un solo campo. No seleccionan ni suben archivos. El botón de evidencia es una representación pendiente.
+- Guardar borrador abre el ejemplo del modal y lleva un fragmento que identifica la variante de origen. :target muestra su enlace de regreso correspondiente entre las seis variantes. **Solo se conserva la variante visual; no se conservan los datos editados ni existe almacenamiento o recuperación entre sesiones.** No se conectan guardado, solicitud pendiente y perfil activo como si fueran operaciones reales.
+- Salir por ahora conduce provisionalmente a inicio.html, donde el comprador sigue sin perfil vendedor activo. El título del enlace y la nota visible indican este destino. Su destino definitivo será Mi cuenta cuando se implemente. Volver a Mi cuenta en la vista pendiente permanece identificado como no disponible, sin enlace roto; Inicio y Explorar permiten salir del módulo.
+- El modal y las dos confirmaciones incluyen una nota visible que aclara que son ejemplos sin guardado, envío o aprobación real. Es una aclaración deliberada añadida fuera de la tarjeta de Figma, cuya composición y dimensiones se conservan. El estado Activo no muestra ventas ni calificaciones; Publicar artículo continúa pendiente.
+- Solo se habilitaron los dos botones Activar perfil vendedor de Inicio comprador y nuevo. No se modificaron inicio-vendedor.html, Login, Registro ni los botones Publicar de otras páginas.
+
 ## Comprobaciones realizadas
 
 Revisión del 23/10/2026:
@@ -218,6 +257,8 @@ Revisión de Detalle del 24/10/2026: tres estados probados con Live Server y Chr
 
 Revisión de Perfil público del 26/10/2026: los dos perfiles probados con Live Server y Chrome a 1440, 1280, 390 y 320 px, además de 1920 px. Sin desplazamiento horizontal, textos fuera de sus cajas ni errores de carga. Inter, avatares, imágenes, SVG, enlaces desde las tres variantes de Detalle, teclado, foco y acceso al último botón mediante scroll comprobados. La franja blanca de la cabecera a 1920 px se verificó también fuera del contenedor centrado. Las 26 capturas de las 13 páginas anteriores permanecen idénticas. Las evidencias están en Evidencias_Figma_V2/Documentacion/Implementacion_Perfil_Vendedor. La comparación visual Mobile de Figma cubre el encuadre exportable; el contenido inferior se contrastó con sus capas y medidas. Quedan pendientes dispositivos físicos, otros navegadores y la revisión del usuario.
 
+Revisión de Activar perfil vendedor del 26/10/2026: nueve vistas verificadas con Live Server y Chrome a 1440, 390, 320, 768, 1024, 1280 y 1920 px. Sin desplazamiento horizontal, errores de recursos ni textos fuera de sus cajas. Las medidas de las ocho composiciones principales coinciden con sus capas de Figma a 1440 y 390 px; el modal conserva su tarjeta de 480 × 278 px Desktop y 358 × 302 px Mobile. Se verificaron etiquetas, Inter, foco, teclado, acceso a las acciones por scroll, los seis regresos del borrador y Salir por ahora hacia Inicio. Enviar solicitud y Enter no generan peticiones; la selección/subida de evidencia no está implementada. Las 30 capturas de las quince páginas anteriores permanecen idénticas. Se compararon las nueve vistas Desktop y los nueve encuadres Mobile con Figma; el contenido Mobile inferior se contrastó con textos, jerarquía y medidas de capas, porque la exportación del frame está recortada al viewport. Las capturas, comparaciones y auditoría están fuera del repositorio en Evidencias_Figma_V2/Documentacion/Implementacion_Activar_Vendedor. Quedan pendientes la revisión visual del usuario, dispositivos físicos, otros motores y todas las funciones de backend.
+
 ## Evidencias y material académico
 
 Ubicación externa:
@@ -236,4 +277,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/perfil-vendedor. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/activar-vendedor. No se han realizado commits ni pushes de esta revisión.
