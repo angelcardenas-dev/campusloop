@@ -4,7 +4,7 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2** y **Detalle de artículo V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2** y **Perfil público del vendedor V2**, en Desktop y Mobile. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
@@ -18,10 +18,12 @@ Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el
 - [Explorar Mobile · 278:3437](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3437): 390 × 844 px, con contenido desplazable.
 - [Detalle Desktop · 278:3486](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3486): 1440 × 1474 px.
 - [Detalle Mobile · 278:3554](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3554): 390 × 844 px, con contenido desplazable.
+- [Perfil de Carlos Desktop · 278:3597](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3597): 1440 × 1235 px.
+- [Perfil de Carlos Mobile · 278:3669](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3669): 390 × 844 px, con contenido desplazable.
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras cinco pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Las otras cuatro pantallas principales, sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
 
 ## Tecnologías y límites del curso
 
@@ -48,6 +50,8 @@ CampusLoop/
 ├── detalle.html                  # MacBook Air M1: Disponible
 ├── detalle-reservado.html        # Mismo artículo: variante estática Reservado
 ├── detalle-vendido.html          # Mismo artículo: variante estática Vendido
+├── perfil-vendedor.html          # Perfil público de Carlos Pérez
+├── perfil-vendedor-nuevo.html    # Referencia estática: María López, sin reputación previa
 ├── css/
 │   └── styles.css
 └── assets/
@@ -80,6 +84,8 @@ Para revisar Inicio, abrir inicio.html con Live Server. Las variantes se abren d
 Para revisar Explorar, abrir explorar.html o usar los enlaces Explorar de Inicio y el botón Explorar artículos de la Landing. Las variantes vacía y de error se abren directamente desde explorar-vacio.html y explorar-error.html; no son resultados reales de una búsqueda. En Mobile, Filtros abre explorar-filtros.html y Cerrar filtros regresa al catálogo.
 
 Para revisar Detalle, usar Ver detalle en la tarjeta de la MacBook Air M1 de explorar.html. Las otras siete tarjetas conservan su detalle pendiente. detalle-reservado.html y detalle-vendido.html se abren directamente con Live Server; son referencias estáticas del mismo producto, no el resultado de pulsar Reservar.
+
+Para revisar el perfil de Carlos, usar Ver perfil desde cualquiera de las tres variantes de Detalle o abrir perfil-vendedor.html. La variante de vendedor nuevo, perfil-vendedor-nuevo.html, se abre directamente con Live Server: representa a María López según Figma y no cambia de usuario ni de sesión.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
 
@@ -167,8 +173,25 @@ Las tres páginas representan la MacBook Air M1 256 GB de Carlos Pérez, estudia
 - Se reutilizan nueve imágenes existentes: galería de tres fotografías de la MacBook, avatares de María y Carlos y las cuatro fotografías de relacionados. Los ocho SVG usados incluyen las estrellas doradas y la navegación compartida. No se descargaron ni duplicaron recursos.
 - La galería es estática: las tres miniaturas se muestran como imágenes, sin cambio interactivo de la foto principal. El salto opcional wbr en calificaciones reproduce el ajuste de la reputación de Figma sin cambiar su texto.
 - En Disponible, Reservar artículo es un botón type="button" sin acción, marcado como pendiente. En Reservado y Vendido se muestra Artículo reservado / Artículo vendido con disabled y el estilo V2 correspondiente. No hay transición entre los estados al pulsar un control.
-- Contactar vendedor y Ver perfil mantienen el aspecto de Figma, con title, aria-disabled y descripción accesible, sin destinos inexistentes. Los cuatro relacionados conservan Ver detalle pendiente porque aún no existe un detalle propio para ellos.
+- Ver perfil abre perfil-vendedor.html desde las tres variantes de Detalle. Contactar vendedor mantiene el aspecto de Figma, con title, aria-disabled y descripción accesible, sin destinos inexistentes. Los cuatro relacionados conservan Ver detalle pendiente porque aún no existe un detalle propio para ellos.
 - El enlace de la ruta, Inicio y Explorar sí funcionan. No se crean reservas, consultas, compras, sesiones ni solicitudes a servidores. El estado del producto es distinto de los estados de una interacción; Reservado no indica una compra completada.
+
+## Cómo está construido el Perfil público del vendedor
+
+| Archivo | Datos de ejemplo | Figma Desktop | Figma Mobile |
+| --- | --- | --- | --- |
+| [perfil-vendedor.html](perfil-vendedor.html) | Carlos Pérez; 4.8, 32 calificaciones, 32 operaciones completadas y tres artículos | [278:3597](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3597) | [278:3669](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3669) |
+| [perfil-vendedor-nuevo.html](perfil-vendedor-nuevo.html) | María López; perfil activo, sin publicaciones, calificaciones ni operaciones completadas | [296:1161](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=296-1161) | [297:1129](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=297-1129) |
+
+- header y nav reutilizan la navegación autenticada, con Explorar seleccionado. main organiza identidad, privacidad, publicaciones y calificaciones recibidas. section agrupa identidad y artículos; cada producto y la calificación son article; aside contiene la información de privacidad y las calificaciones. blockquote y time representan el comentario y la fecha de la operación.
+- Las clases nuevas seller-public- evitan conflictos con seller-card, seller-avatar y las demás clases seller- de la Landing. Se reutilizan home-header, home-bottom, home-product, button, panel, home-badge, seller-rating, stars y auth-info; no se cambian sus reglas existentes.
+- Box Model, border-box, padding y márgenes reproducen las tarjetas. inline-block y vertical-align colocan avatar e información, y los artículos junto a las calificaciones en Desktop. calc permite adaptar el ancho de publicaciones. En Mobile se apilan los bloques y las tarjetas pasan de tres a dos columnas.
+- Las cinco imágenes únicas usadas son los avatares de Carlos y María, MacBook Air M1, iPad Air y Física Universitaria. Se reutilizan ocho SVG e Inter locales, sin descargas ni copias adicionales. La variante nueva usa únicamente el avatar de María y los íconos de navegación.
+- El fondo blanco de 80 px de la cabecera se extiende a todo el ancho mediante el fondo compartido de home-page; el contenido sigue centrado a un máximo de 1440 px. En Mobile, la cabecera de 72 px y la barra inferior de 80 px quedan fuera del contenido desplazable.
+- Las tres acciones Ver perfil de Detalle conducen al perfil de Carlos. La MacBook del perfil regresa a detalle.html; los detalles de iPad y Física permanecen pendientes. Inicio y Explorar navegan a sus páginas existentes.
+- Contactar vendedor y Ver calificaciones son representaciones estáticas, con title, aria-disabled y descripción accesible. No abren conversaciones ni un historial simulado. Las estrellas muestran las calificaciones del diseño; no son controles editables.
+- La calificación de María se identifica como recibida por Carlos en su papel de vendedor. No se mezclan historiales de comprador. Comprador y vendedor podrán calificar de forma independiente una vez que ambos confirmen la finalización de la operación; esta entrega no implementa ese sistema ni ofrece un formulario anticipado.
+- Un perfil activo no genera reputación: la variante de María conserva Aún sin calificaciones y Sin operaciones completadas todavía. Las evidencias de experiencia previa son privadas y no se muestran ni se enlazan.
 
 ## Comprobaciones realizadas
 
@@ -193,6 +216,8 @@ Revisión de Explorar del 24/10/2026: catálogo, vacío y error probados con Liv
 
 Revisión de Detalle del 24/10/2026: tres estados probados con Live Server y Chrome a 1440, 1280, 1024, 768, 390 y 320 px. Las medidas de referencia coinciden con Figma: Desktop 1440 × 1474 y contenido Mobile de 2563 px dentro del frame de 390 × 844. Se comprobaron recursos, Inter, límites de texto, ausencia de desbordamiento horizontal, teclado, foco, desplazamiento y navegación Explorar → Detalle → Explorar. Solo la MacBook enlaza a detalle.html. Las veinte capturas de las diez páginas anteriores permanecen idénticas. Capturas, comparaciones e inventario de recursos se guardan en Evidencias_Figma_V2/Documentacion/Implementacion_Detalle. Otros navegadores y dispositivos físicos siguen pendientes.
 
+Revisión de Perfil público del 26/10/2026: los dos perfiles probados con Live Server y Chrome a 1440, 1280, 390 y 320 px, además de 1920 px. Sin desplazamiento horizontal, textos fuera de sus cajas ni errores de carga. Inter, avatares, imágenes, SVG, enlaces desde las tres variantes de Detalle, teclado, foco y acceso al último botón mediante scroll comprobados. La franja blanca de la cabecera a 1920 px se verificó también fuera del contenedor centrado. Las 26 capturas de las 13 páginas anteriores permanecen idénticas. Las evidencias están en Evidencias_Figma_V2/Documentacion/Implementacion_Perfil_Vendedor. La comparación visual Mobile de Figma cubre el encuadre exportable; el contenido inferior se contrastó con sus capas y medidas. Quedan pendientes dispositivos físicos, otros navegadores y la revisión del usuario.
+
 ## Evidencias y material académico
 
 Ubicación externa:
@@ -211,4 +236,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/detalle. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/perfil-vendedor. No se han realizado commits ni pushes de esta revisión.

@@ -704,3 +704,47 @@ h2 { font-size: 28px; font-weight: 700; line-height: 36px; }
   .detail-info { display: block; width: 100%; margin: 24px 0 0; }
   .detail-seller { display: block; width: 100%; margin-top: 24px; }
 }
+
+/* Perfil público V2. seller-public- evita conflictos con la ficha de la Landing. */
+.seller-public-heading h1 { margin: 0; font-size: 40px; line-height: 48px; }
+.seller-public-heading p { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 24px; }
+.seller-public-identity { padding: 32px; background: var(--brand-light); }
+.seller-public-person { width: calc(100% + 2px); font-size: 0; }
+.seller-public-photo { display: inline-block; vertical-align: top; width: 112px; height: 112px; margin-right: 24px; border-radius: 50%; object-fit: cover; }
+.seller-public-information { display: inline-block; vertical-align: top; width: 720px; max-width: calc(100% - 136px); }
+.seller-public-information > * + * { margin-top: 8px; }
+.seller-public-information .seller-public-name { color: var(--brand); font-size: 28px; font-weight: 700; line-height: 36px; }
+.seller-public-university, .seller-public-history { font-size: 14px; line-height: 20px; }
+.seller-public-status { font-size: 0; line-height: 0; }
+.seller-public-verification { color: var(--brand); font-size: 14px; font-weight: 600; line-height: 20px; }
+.seller-public-rating { width: 100%; }
+.seller-public-rating > p { display: inline-block; width: calc(100% - 160px); margin: 0; font-size: 16px; line-height: 23px; overflow-wrap: break-word; }
+.seller-public-no-rating { color: var(--brand); font-size: 16px; font-weight: 600; line-height: 23px; }
+.seller-public-contact { display: block; width: 240px; margin-top: 24px; }
+.seller-public-notice h2, .seller-public-notice h3 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.seller-public-content { font-size: 0; }
+.seller-public-products { display: inline-block; vertical-align: top; width: calc(100% - 424px); margin-right: 24px; }
+.seller-public-products .home-product { width: calc((100% - 32px) / 3); }
+.seller-public-empty { margin-top: 16px; }
+.seller-public-reviews { display: inline-block; vertical-align: top; width: 400px; padding: 20px; background: var(--surface); }
+.seller-public-reviews > * + * { margin-top: 16px; }
+.seller-public-review > * + * { margin-top: 16px; }
+.seller-public-review-avatar { display: block; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.seller-public-reviews .seller-public-rating { width: calc(100% + 2px); }
+.seller-public-reviews .seller-public-rating > p { color: var(--text); font-size: 14px; line-height: 20px; }
+.seller-public-comment { margin: 16px 0 0; color: var(--muted); font-size: 14px; line-height: 20px; }
+.seller-public-review-context { color: var(--muted); font-size: 12px; line-height: 17px; }
+.seller-public-ratings-link { display: block; width: calc(100% + 2px); }
+.seller-public-empty-reviews { color: var(--muted); font-size: 14px; line-height: 20px; }
+
+@media (max-width: 1100px) {
+  .seller-public-heading h1 { font-size: 28px; line-height: 36px; }
+  .seller-public-heading p { font-size: 14px; line-height: 20px; }
+  .seller-public-identity { padding: 24px; }
+  .seller-public-photo { display: block; width: 88px; height: 88px; margin-right: 0; }
+  .seller-public-information { display: block; width: 100%; max-width: none; margin-top: 24px; }
+  .seller-public-contact { width: calc(100% + 2px); }
+  .seller-public-products { display: block; width: 100%; margin-right: 0; }
+  .seller-public-products .home-product { width: calc((100% - 16px) / 2); }
+  .seller-public-reviews { display: block; width: 100%; margin-top: 24px; }
+}
