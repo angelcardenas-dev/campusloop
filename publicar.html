@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nueva publicación de CampusLoop: formulario visual estático para estudiantes con perfil vendedor activo.">
+  <title>Nueva publicación · inicial — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page publish-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <p class="visually-hidden" id="home-pending">Vista estática de Nueva publicación para un vendedor activo. No existe una sesión real ni se verifican permisos. No se suben fotografías, no se publica ni se guarda información y no se utiliza IA real. Las variantes muestran datos de ejemplo y no conservan lo escrito. Reservas, Notificaciones, Mi cuenta y Mis publicaciones están pendientes de implementación.</p>
+
+  <header class="home-header page-width">
+    <a class="brand home-brand" href="inicio-vendedor.html" aria-label="CampusLoop, Inicio"><img src="assets/icons/campus-32.svg" width="32" height="32" alt="">CampusLoop</a>
+    <nav class="home-primary" aria-label="Navegación principal autenticada">
+      <ul>
+          <li><a href="inicio-vendedor.html">Inicio</a></li>
+          <li><a href="explorar.html">Explorar</a></li>
+          <li><a href="publicar.html" aria-current="page">Publicar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación">Reservas</a></li>
+      </ul>
+    </nav>
+    <div class="home-search" role="search" aria-label="Búsqueda de artículos pendiente">
+      <img src="assets/icons/explorar-20.svg" width="20" height="20" alt=""><label class="visually-hidden" for="home-search">Buscar artículos</label><input id="home-search" type="search" placeholder="Buscar artículos..." readonly aria-disabled="true" aria-describedby="home-pending" title="Búsqueda pendiente de implementación">
+    </div>
+    <a class="home-notifications" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Notificaciones, pendiente" title="Notificaciones — pendiente de implementación"><img src="assets/icons/campana.svg" width="24" height="24" alt=""></a>
+    <a class="home-avatar" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Mi cuenta de María López, pendiente" title="Mi cuenta — pendiente de implementación"><img src="assets/images/avatares/maria-lopez.jpg" width="40" height="40" alt=""></a>
+  </header>
+
+  <div class="home-viewport" role="region" aria-label="Contenido desplazable de Nueva publicación" tabindex="0">
+    <main id="contenido" class="home-main publish-main page-width" tabindex="-1">
+      <div class="publish-heading">
+        <h1>Publicar artículo</h1>
+        <p>Completa los datos de tu artículo. Esta sección requiere un perfil vendedor activo.</p>
+      </div>
+      <div class="publish-layout">
+      <!-- Sin campos name ni envío a servidores. El submit oculto deshabilitado
+           bloquea el envío implícito con Enter; Publicar es type="button". -->
+      <form class="panel publish-form" method="post" novalidate aria-label="Datos de la nueva publicación" aria-describedby="home-pending">
+        <section class="publish-section" aria-labelledby="publish-photos-title">
+          <h2 id="publish-photos-title">1. Fotos del artículo</h2>
+          <button class="panel activate-upload publish-upload publish-wide" type="button" aria-disabled="true" aria-describedby="home-pending" title="Carga de fotos pendiente de implementación; no se seleccionan ni suben archivos">
+            <img src="assets/icons/foto-32.svg" width="32" height="32" alt="">
+            <span class="activate-upload-title">Subir fotos · 0/5</span>
+            <span class="activate-upload-hint">PNG o JPG · Máximo 10 MB por archivo. Muestra distintos ángulos del producto.</span>
+          </button>
+        </section>
+        <section class="publish-section" aria-labelledby="publish-information-title">
+          <h2 id="publish-information-title">2. Información del artículo</h2>
+          <div class="auth-field publish-wide">
+            <label for="titulo">Título del artículo</label>
+            <input class="auth-control" id="titulo" type="text" autocomplete="off" placeholder="Ej. MacBook Air M1 de 256 GB">
+          </div>
+          <div class="auth-field publish-wide">
+            <label for="categoria">Categoría</label>
+            <select class="auth-control explore-select" id="categoria" aria-describedby="home-pending"><option selected>Selecciona una categoría</option><option>Académico · Apuntes</option></select>
+          </div>
+          <div class="auth-field publish-wide">
+            <label for="precio">Precio (S/)</label>
+            <input class="auth-control" id="precio" type="number" autocomplete="off" min="0.01" step="0.01" inputmode="decimal" placeholder="Ej. 2400">
+          </div>
+          <div class="auth-field publish-wide">
+            <label for="condicion">Condición del artículo</label>
+            <select class="auth-control explore-select" id="condicion" aria-describedby="home-pending"><option selected>Como nuevo</option><option>Buen estado</option></select>
+          </div>
+          <p class="publish-status-note">Estado inicial de la publicación: Disponible.</p>
+        </section>
+        <section class="publish-section" aria-labelledby="publish-description-title">
+          <h2 id="publish-description-title">3. Descripción</h2>
+          <div class="auth-field publish-wide publish-description">
+            <label for="descripcion">Describe tu artículo</label>
+            <textarea class="auth-control" id="descripcion" rows="4" maxlength="1000" autocomplete="off" aria-describedby="description-limit" placeholder="Características, uso y motivo de venta."></textarea>
+            <p class="publish-limit" id="description-limit">Máximo 1000 caracteres</p>
+          </div>
+          <div class="auth-field publish-wide">
+            <label for="accesorios">Accesorios incluidos</label>
+            <input class="auth-control" id="accesorios" type="text" autocomplete="off" placeholder="Cargador original, caja, manuales...">
+          </div>
+        </section>
+        <section class="publish-section" aria-labelledby="publish-location-title">
+          <h2 id="publish-location-title">4. Ubicación y disponibilidad</h2>
+          <div class="auth-field publish-wide">
+            <label for="campus">Campus de entrega</label>
+            <select class="auth-control explore-select" id="campus" aria-describedby="home-pending"><option selected>PUCP · San Miguel</option></select>
+          </div>
+          <div class="auth-field publish-wide">
+            <label for="disponibilidad">Disponibilidad</label>
+            <select class="auth-control explore-select" id="disponibilidad" aria-describedby="home-pending"><option selected>Coordinar con el comprador</option></select>
+          </div>
+        </section>
+        <div class="publish-actions publish-wide">
+          <a class="button button-outline publish-save" href="publicar-borrador.html#publish-inicial" aria-describedby="home-pending" title="Ver ejemplo de borrador; no se guarda la información">Guardar borrador</a>
+          <button class="button button-primary publish-submit" type="button" aria-disabled="true" aria-describedby="home-pending" title="Publicación pendiente de implementación; no se envían datos">Publicar artículo</button>
+        </div>
+        <button type="submit" hidden disabled aria-hidden="true">Envío no disponible</button>
+      </form>
+      <aside class="panel publish-assistant" aria-labelledby="publish-assistant-title">
+        <h2 id="publish-assistant-title">Asistente IA · Opcional</h2>
+        <p>Puedes pedir sugerencias para el título o la descripción. Tú decides qué aplicar; nada se publica automáticamente.</p>
+        <a class="button button-outline publish-wide publish-open-ai" href="publicar-ia.html#publish-inicial" title="Ver sugerencias estáticas de Figma; no se utiliza IA real" aria-describedby="home-pending">Ver sugerencias</a>
+      </aside>
+      </div>
+    </main>
+  </div>
+
+  <nav class="home-bottom" aria-label="Navegación móvil autenticada">
+    <ul>
+      <li><a href="inicio-vendedor.html"><img src="assets/icons/campus.svg" width="24" height="24" alt=""><span>Inicio</span></a></li>
+      <li><a href="explorar.html"><img src="assets/icons/explorar.svg" width="24" height="24" alt=""><span>Explorar</span></a></li>
+      <li><a href="publicar.html" aria-current="page"><img src="assets/icons/publicar.svg" width="24" height="24" alt=""><span>Publicar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación"><img src="assets/icons/reservas.svg" width="24" height="24" alt=""><span>Reservas</span></a></li>
+    </ul>
+  </nav>
+</body>
+</html>
