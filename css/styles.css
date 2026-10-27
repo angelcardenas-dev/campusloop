@@ -835,3 +835,64 @@ h2 { font-size: 28px; font-weight: 700; line-height: 36px; }
   .activate-description textarea { height: 68px; min-height: 68px; }
   .activate-choices .button { padding-right: 8px; padding-left: 8px; }
 }
+
+/* Nueva publicación V2: formulario inicial, errores, listo y confirmaciones.
+   Reutiliza home-, auth-, button, panel y la tarjeta de carga de Activación. */
+.publish-heading h1 { margin: 0; font-size: 40px; line-height: 48px; }
+.publish-heading p { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 24px; }
+.publish-layout { font-size: 0; }
+.publish-form, .publish-assistant { display: inline-block; vertical-align: top; margin: 0; padding: 24px; font-size: 16px; }
+.publish-form { width: calc(100% - 408px); background: var(--surface); }
+.publish-form > * + *, .publish-section > * + *, .publish-section > .auth-field { margin-top: 24px; }
+.publish-wide { width: calc(100% + 2px); }
+.publish-upload { margin-right: 0; margin-left: 0; }
+.publish-photo { display: block; width: calc(100% + 2px); height: 160px; border-radius: 8px; object-fit: cover; }
+.publish-upload figcaption { color: var(--brand); font-size: 14px; font-weight: 600; line-height: 20px; }
+.publish-field-error .auth-control { border-color: var(--error); }
+.publish-error-help { margin-top: 8px; color: var(--error); font-size: 13px; line-height: 18px; }
+.publish-status-note { color: var(--muted); font-size: 13px; line-height: 18px; }
+.publish-description textarea { height: 112px; min-height: 112px; resize: vertical; color: var(--muted); }
+.publish-description textarea::placeholder { color: var(--muted); }
+.publish-limit { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 17px; }
+.publish-form [type=number] { appearance: textfield; }
+.publish-form [type=number]::-webkit-inner-spin-button, .publish-form [type=number]::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.publish-actions { font-size: 0; }
+.publish-actions .button { width: calc((100% - 16px) / 2); }
+.publish-actions .button + .button { margin-left: 16px; }
+.publish-submit { font-family: inherit; cursor: default; }
+.publish-submit:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.publish-assistant { width: 384px; margin-left: 24px; background: var(--brand-light); }
+.publish-assistant > * + * { margin-top: 16px; }
+.publish-assistant h2 { color: var(--brand); }
+.publish-assistant p { font-size: 14px; line-height: 20px; }
+.publish-assistant .button { display: block; }
+.publish-form > .publish-alert:first-child { margin-top: 0; }
+.publish-main .publish-alert h2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.publish-alert p { color: var(--muted); }
+.publish-alert-error { background: #fef2f2; }
+.publish-alert-success { background: #ecfdf3; }
+.publish-result > .button { display: block; }
+.publish-static { color: var(--muted); font-size: 12px; line-height: 18px; }
+.publish-state-note { padding: 0 80px 24px; }
+.publish-ai-copy { white-space: pre-line; }
+.publish-ai-main > .publish-static { margin-top: 24px; }
+/* El fragmento solo elige el enlace de regreso, nunca almacena datos. */
+.publish-return, .publish-result > .publish-return, .publish-ai-dialog > .publish-return { display: none; }
+.publish-return-inicial, .publish-result > .publish-return-inicial, .publish-ai-dialog > .publish-return-inicial { display: block; }
+.publish-origin:target ~ .home-viewport .publish-return, .publish-origin:target ~ main .publish-return { display: none; }
+#publish-inicial:target ~ .home-viewport .publish-return-inicial, #publish-inicial:target ~ main .publish-return-inicial { display: block; }
+#publish-error:target ~ .home-viewport .publish-return-error, #publish-error:target ~ main .publish-return-error { display: block; }
+#publish-listo:target ~ .home-viewport .publish-return-listo, #publish-listo:target ~ main .publish-return-listo { display: block; }
+
+@media (min-width: 1101px) and (max-width: 1399px) {
+  .publish-state-note { padding-right: 32px; padding-left: 32px; }
+}
+@media (max-width: 1100px) {
+  .publish-heading h1 { font-size: 28px; line-height: 36px; }
+  .publish-heading p { font-size: 14px; line-height: 20px; }
+  .publish-form, .publish-assistant { display: block; width: 100%; }
+  .publish-assistant { margin: 24px 0 0; }
+  .publish-actions .button { display: block; width: 100%; }
+  .publish-actions .button + .button { margin: 16px 0 0; }
+  .publish-state-note { padding-right: 16px; padding-left: 16px; }
+}

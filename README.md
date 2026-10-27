@@ -4,7 +4,7 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2**, **Perfil público del vendedor V2** y **Activar perfil vendedor V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2**, **Perfil público del vendedor V2**, **Activar perfil vendedor V2** y **Nueva publicación V2**, en Desktop y Mobile. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
@@ -23,7 +23,7 @@ Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras tres pantallas principales (Publicar, Reservas y Mi cuenta), sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Las otras dos pantallas principales (Reservas y Mi cuenta), sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
 
 ## Tecnologías y límites del curso
 
@@ -61,6 +61,12 @@ CampusLoop/
 ├── activar-vendedor-borrador.html         # Modal estático con regreso al origen
 ├── activar-vendedor-pendiente.html        # Ejemplo de solicitud en revisión
 ├── activar-vendedor-activo.html           # Ejemplo de aprobación, sin reputación
+├── publicar.html                         # Nueva publicación, formulario inicial
+├── publicar-error.html                   # Validación visual de título, precio y fotos
+├── publicar-listo.html                   # Ejemplo prellenado: Apuntes de Cálculo
+├── publicar-borrador.html                # Confirmación estática de borrador
+├── publicar-exito.html                   # Ejemplo visual de publicación exitosa
+├── publicar-ia.html                      # Sugerencias opcionales de ejemplo
 ├── css/
 │   └── styles.css
 └── assets/
@@ -97,6 +103,8 @@ Para revisar Detalle, usar Ver detalle en la tarjeta de la MacBook Air M1 de exp
 Para revisar el perfil de Carlos, usar Ver perfil desde cualquiera de las tres variantes de Detalle o abrir perfil-vendedor.html. La variante de vendedor nuevo, perfil-vendedor-nuevo.html, se abre directamente con Live Server: representa a María López según Figma y no cambia de usuario ni de sesión.
 
 Para revisar Activar perfil vendedor, usar el botón con ese nombre desde inicio.html o inicio-nuevo.html, o abrir activar-vendedor.html con Live Server. Las dos opciones de experiencia navegan entre ejemplos estáticos; no conservan lo escrito. Las variantes de error, listas, pendiente y activa se abren desde los enlaces de la tabla de Activación. Enviar solicitud no navega a una confirmación ni envía datos.
+
+Para revisar Nueva publicación, abrir publicar.html con Live Server o usar Publicar / Publicar artículo desde inicio-vendedor.html o activar-vendedor-activo.html. En las vistas de comprador, Publicar abre activar-vendedor.html. Las variantes de error, lista y éxito se abren desde la tabla de Publicación; el botón Publicar artículo no crea ni simula una publicación. Guardar borrador y Ver sugerencias recorren ejemplos estáticos, sin conservar lo escrito.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
 
@@ -165,7 +173,7 @@ Las tres vistas representan estados de ejemplo independientes; no cambian roles 
 - Los filtros ofrecen casillas, selectores y precios numéricos nativos. Limpiar filtros solo restablece los controles locales; no cambia el estado vacío ni el catálogo. Aplicar filtros es type="button" sin acción, con aria-disabled. El formulario no tiene controles name ni botones submit y no envía datos.
 - El panel Mobile es una página estática independiente, como el frame de referencia sin cabecera ni barra inferior. Cerrar filtros vuelve al catálogo; todavía no se conservan las selecciones entre páginas.
 - La búsqueda y el ordenamiento no cambian los artículos. Más recientes es la única opción definida en el diseño. Reintentar no hace peticiones. La frase de Figma «Tu búsqueda se conserva» es texto del estado de ejemplo; esta etapa no almacena búsquedas ni garantiza persistencia.
-- Ver detalle de la MacBook Air M1 abre detalle.html. Los detalles de los otros siete artículos, Publicar, Reservas, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio y Explorar sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
+- Ver detalle de la MacBook Air M1 abre detalle.html. Los detalles de los otros siete artículos, Reservas, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio y Explorar sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
 
 ## Cómo está construido Detalle
 
@@ -229,8 +237,34 @@ Son nueve representaciones estáticas de los frames finales V2. No se crea una s
 - Enviar solicitud es type="button" sin acción y con aria-disabled. Los formularios usan method="post", carecen de controles name y tienen un submit oculto deshabilitado para bloquear el envío implícito con Enter, incluso en la variante de un solo campo. No seleccionan ni suben archivos. El botón de evidencia es una representación pendiente.
 - Guardar borrador abre el ejemplo del modal y lleva un fragmento que identifica la variante de origen. :target muestra su enlace de regreso correspondiente entre las seis variantes. **Solo se conserva la variante visual; no se conservan los datos editados ni existe almacenamiento o recuperación entre sesiones.** No se conectan guardado, solicitud pendiente y perfil activo como si fueran operaciones reales.
 - Salir por ahora conduce provisionalmente a inicio.html, donde el comprador sigue sin perfil vendedor activo. El título del enlace y la nota visible indican este destino. Su destino definitivo será Mi cuenta cuando se implemente. Volver a Mi cuenta en la vista pendiente permanece identificado como no disponible, sin enlace roto; Inicio y Explorar permiten salir del módulo.
-- El modal y las dos confirmaciones incluyen una nota visible que aclara que son ejemplos sin guardado, envío o aprobación real. Es una aclaración deliberada añadida fuera de la tarjeta de Figma, cuya composición y dimensiones se conservan. El estado Activo no muestra ventas ni calificaciones; Publicar artículo continúa pendiente.
-- Solo se habilitaron los dos botones Activar perfil vendedor de Inicio comprador y nuevo. No se modificaron inicio-vendedor.html, Login, Registro ni los botones Publicar de otras páginas.
+- El modal y las dos confirmaciones incluyen una nota visible que aclara que son ejemplos sin guardado, envío o aprobación real. Es una aclaración deliberada añadida fuera de la tarjeta de Figma, cuya composición y dimensiones se conservan. El estado Activo no muestra ventas ni calificaciones; Publicar artículo abre publicar.html como acceso estático de vendedor activo.
+- En la entrega de Activación se habilitaron los dos botones Activar perfil vendedor de Inicio comprador y nuevo. La integración posterior de Publicar se documenta en la sección siguiente; Login y Registro permanecen intactos.
+
+## Cómo está construida Nueva publicación
+
+El nombre del frame V2 es Publicar artículo. Se implementan seis vistas, cada una con su referencia Desktop y Mobile, sin crear publicaciones reales:
+
+| Archivo | Variante | Figma Desktop | Figma Mobile |
+| --- | --- | --- | --- |
+| [publicar.html](publicar.html) | Formulario inicial | [278:3711](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3711) | [278:3774](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3774) |
+| [publicar-error.html](publicar-error.html) | Validación visual de errores | [298:2205](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=298-2205) | [299:1342](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=299-1342) |
+| [publicar-listo.html](publicar-listo.html) | Listo para publicar: datos de ejemplo | [306:2601](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-2601) | [307:3195](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3195) |
+| [publicar-borrador.html](publicar-borrador.html) | Borrador guardado, sin almacenamiento | [298:2298](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=298-2298) | [299:1448](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=299-1448) |
+| [publicar-exito.html](publicar-exito.html) | Publicación exitosa, solo referencia visual | [298:2331](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=298-2331) | [299:1494](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=299-1494) |
+| [publicar-ia.html](publicar-ia.html) | Sugerencias opcionales, sin IA real | [306:3164](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=306-3164) | [307:3814](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=307-3814) |
+
+- Reutiliza home-header, home-bottom con Publicar seleccionado, home-viewport, auth-field, auth-control, auth-info, explore-select, button y panel. La carga visual reutiliza activate-upload y el modal usa la composición existente de activate-draft. Las reglas publish- se añaden al final del CSS sin modificar las anteriores.
+- header y nav conservan los cuatro apartados autenticados, notificaciones y avatar. main contiene la presentación y el formulario; cuatro section organizan fotos, información, descripción y ubicación. Cada control tiene label; figure y figcaption representan la fotografía prellenada y aside el asistente opcional y los avisos.
+- inline-block y vertical-align alinean el formulario de 872 px y el asistente de 384 px con separación de 24 px a 1440 px. border-box incluye bordes y padding de 24 px; los bloques interiores usan márgenes de 24 px y controles de 48 px. En Mobile se apilan formulario y asistente, y las dos acciones pasan a bloques separados. La cabecera y la barra inferior quedan fuera del contenido desplazable.
+- Se reutilizan el avatar de María, la fotografía original de Apuntes de Cálculo, ocho SVG e Inter. Los hashes de las fotografías coinciden con sus rellenos de Figma; sus encuadres usan object-fit: cover. No se descargaron ni duplicaron recursos. V2 / Recursos solo contiene el fondo de autenticación, que no se utiliza en estas pantallas.
+- Categoría, condición, campus y disponibilidad usan selectores nativos con las opciones observadas en los frames: la categoría de ejemplo Académico · Apuntes, Como nuevo / Buen estado, PUCP · San Miguel y Coordinar con el comprador. No representan un catálogo completo ni selectores dependientes. El precio usa type=number, decimales y etiqueta S/. La descripción es textarea con límite nativo de 1000 caracteres, sin contador dinámico.
+- La variante de error conserva el aviso general y los estados rojos de título y precio con aria-invalid y ayudas asociadas. Es un estado fijo de ejemplo: escribir no elimina sus errores ni ejecuta validación. La variante lista muestra una fotografía y los datos aprobados de Apuntes de Cálculo — Ciclo 2026-2, S/ 25, Buen estado.
+- Publicar artículo es type=button, aria-disabled y no navega al éxito. El formulario declara method=post, no tiene campos name y contiene un submit oculto deshabilitado para impedir también los envíos con Enter. Subir fotos no selecciona ni transmite archivos. No hay creación de artículos, almacenamiento, pagos ni servicios externos.
+- Guardar borrador abre una confirmación de ejemplo. Continuar editando regresa a la variante indicada por el fragmento del enlace: inicial, error o lista. Solo recupera la composición y los datos de ejemplo; **no se conserva lo escrito ni existe un borrador persistente**. La confirmación de éxito se abre directamente para revisión y no afirma una publicación real; Ver mis publicaciones permanece pendiente, sin enlace roto.
+- Ver sugerencias abre el modal estático de Figma. Cancelar regresa al ejemplo de origen; Aplicar sugerencias abre publicar-listo.html y no genera contenido ni modifica los campos anteriores. Una nota visible aclara que son sugerencias de ejemplo. El modal se representa como página independiente, sin simular una superposición dinámica.
+- Borrador, éxito y sugerencias tienen una nota aclaratoria fuera de sus tarjetas para distinguir ejemplos de operaciones reales. Se conservan las dimensiones originales de las tarjetas. Los controles nativos conservan teclado y foco; el textarea permite redimensionar su altura.
+- Los accesos Publicar de inicio-vendedor.html y activar-vendedor-activo.html llevan a publicar.html. Los de Inicio comprador/nuevo, Explorar, Detalle y los perfiles públicos llevan a Activación. El vendedor mostrado en un perfil público no determina los permisos del visitante. Las otras variantes de Activación mantienen su composición y no saltan directamente a publicar; la pendiente conserva su estado.
+- Inicio desde Publicar vuelve a inicio-vendedor.html. Las otras páginas conservan su usuario de ejemplo: no arrastran roles al navegar ni detectan sesiones. El acceso directo a publicar.html no está protegido; el control real de permisos requiere autenticación y backend futuros. Activar no exige experiencia a todos ni asigna reputación.
 
 ## Comprobaciones realizadas
 
@@ -259,6 +293,8 @@ Revisión de Perfil público del 26/10/2026: los dos perfiles probados con Live 
 
 Revisión de Activar perfil vendedor del 26/10/2026: nueve vistas verificadas con Live Server y Chrome a 1440, 390, 320, 768, 1024, 1280 y 1920 px. Sin desplazamiento horizontal, errores de recursos ni textos fuera de sus cajas. Las medidas de las ocho composiciones principales coinciden con sus capas de Figma a 1440 y 390 px; el modal conserva su tarjeta de 480 × 278 px Desktop y 358 × 302 px Mobile. Se verificaron etiquetas, Inter, foco, teclado, acceso a las acciones por scroll, los seis regresos del borrador y Salir por ahora hacia Inicio. Enviar solicitud y Enter no generan peticiones; la selección/subida de evidencia no está implementada. Las 30 capturas de las quince páginas anteriores permanecen idénticas. Se compararon las nueve vistas Desktop y los nueve encuadres Mobile con Figma; el contenido Mobile inferior se contrastó con textos, jerarquía y medidas de capas, porque la exportación del frame está recortada al viewport. Las capturas, comparaciones y auditoría están fuera del repositorio en Evidencias_Figma_V2/Documentacion/Implementacion_Activar_Vendedor. Quedan pendientes la revisión visual del usuario, dispositivos físicos, otros motores y todas las funciones de backend.
 
+Revisión de Nueva publicación del 26/10/2026: seis vistas probadas con Live Server y Chrome a 1440, 1280, 1920, 320, 390, 768 y 1024 px. Las medidas principales coinciden con las doce referencias V2 a 1440 y 390 px. Sin desbordamiento horizontal, textos fuera de sus cajas ni errores de recursos. Se verificaron etiquetas, Inter, foco, navegación por teclado, scroll y acceso a las últimas acciones sobre la barra inferior. Los enlaces distinguen vendedor activo y comprador; borrador y sugerencias regresan a sus ejemplos de origen. Publicar, Subir fotos y Enter no generan peticiones. Las 48 capturas de las 24 páginas anteriores permanecen idénticas. Se compararon las seis vistas Desktop y los seis encuadres Mobile; el contenido Mobile inferior se contrastó con capas y medidas de Figma y se capturó completo desde HTML. Las evidencias están en Evidencias_Figma_V2/Documentacion/Implementacion_Publicar. Quedan pendientes la revisión visual del usuario, dispositivos físicos, otros navegadores y las funciones reales descritas arriba.
+
 ## Evidencias y material académico
 
 Ubicación externa:
@@ -277,4 +313,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/activar-vendedor. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/publicar. No se han realizado commits ni pushes de esta revisión.
