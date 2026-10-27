@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Activación del perfil vendedor de CampusLoop: representación visual estática para estudiantes de Lima.">
+  <title>Activar perfil vendedor · error — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="home-page activate-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <p id="home-pending" class="visually-hidden">Vista estática de Activar perfil vendedor. No se envían solicitudes, no se suben evidencias y no se guardan datos ni borradores. Cambiar de variante carga datos de ejemplo, no conserva lo escrito. Publicar artículos, Reservas, Notificaciones y Mi cuenta todavía no están implementados.</p>
+
+  <header class="home-header page-width">
+    <a class="brand home-brand" href="inicio.html" aria-label="CampusLoop, Inicio"><img src="assets/icons/campus-32.svg" width="32" height="32" alt="">CampusLoop</a>
+    <nav class="home-primary" aria-label="Navegación principal autenticada">
+      <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="explorar.html">Explorar</a></li>
+          <li><a href="#contenido" aria-current="page">Publicar</a></li>
+          <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación">Reservas</a></li>
+      </ul>
+    </nav>
+    <div class="home-search" role="search" aria-label="Búsqueda de artículos pendiente">
+      <img src="assets/icons/explorar-20.svg" width="20" height="20" alt=""><label class="visually-hidden" for="home-search">Buscar artículos</label><input id="home-search" type="search" placeholder="Buscar artículos..." readonly aria-disabled="true" aria-describedby="home-pending" title="Búsqueda pendiente de implementación">
+    </div>
+    <a class="home-notifications" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Notificaciones, pendiente" title="Notificaciones — pendiente de implementación"><img src="assets/icons/campana.svg" width="24" height="24" alt=""></a>
+    <a class="home-avatar" role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" aria-label="Mi cuenta de María López, pendiente" title="Mi cuenta — pendiente de implementación"><img src="assets/images/avatares/maria-lopez.jpg" width="40" height="40" alt=""></a>
+  </header>
+
+  <div class="home-viewport" role="region" aria-label="Contenido desplazable de Activar perfil vendedor" tabindex="0">
+    <main id="contenido" class="home-main activate-main page-width" tabindex="-1">
+      <div class="activate-heading">
+        <h1>Activa tu perfil vendedor</h1>
+        <p>Tu cuenta ya permite comprar y reservar. Activa el perfil solo cuando quieras publicar.</p>
+      </div>
+      <div class="activate-columns">
+      <aside class="panel activate-explanation" aria-labelledby="activate-benefit">
+        <span class="home-badge activate-status-inactive">Inactivo</span>
+        <h2 id="activate-benefit">Vende lo que ya no usas</h2>
+        <p>Publica tus artículos y conecta con estudiantes de Lima. Activar el perfil no te asigna ventas ni reputación.</p>
+        <ol class="activate-steps">
+          <li><h3>1 · Completa tus datos</h3><p>Indica si es tu primera vez vendiendo.</p></li>
+          <li><h3>2 · Validación</h3><p>Revisamos los datos y las evidencias solo cuando corresponda.</p></li>
+          <li><h3>3 · Empieza a publicar</h3><p>Recibirás una confirmación cuando tu perfil esté activo.</p></li>
+        </ol>
+      </aside>
+      <!-- El submit deshabilitado impide también el envío implícito con Enter.
+           Los controles no tienen name y ningún botón realiza envíos. -->
+      <form class="panel activate-card activate-form" method="post" novalidate aria-labelledby="activate-form-title" aria-describedby="home-pending">
+        <h2 id="activate-form-title">Información de tu experiencia</h2>
+        <aside class="auth-info activate-wide activate-alert activate-alert-error" aria-labelledby="activate-error">
+          <h2 id="activate-error">Revisa tu solicitud</h2>
+          <p>Acepta las normas de publicación antes de enviar.</p>
+        </aside>
+        <div class="activate-choices activate-wide" role="group" aria-labelledby="activate-question">
+          <p id="activate-question">¿Tienes experiencia vendiendo?</p>
+          <a class="button button-outline" href="activar-vendedor.html" aria-current="true" title="Ver variante estática: principiante; no conserva los cambios"><span aria-hidden="true">●</span> Es mi primera vez</a>
+          <a class="button button-outline" href="activar-vendedor-experiencia.html" title="Ver variante estática: con experiencia; no conserva los cambios"><span aria-hidden="true">○</span> Sí, tengo experiencia</a>
+        </div>
+        <aside class="auth-info activate-wide activate-alert activate-alert-info" aria-labelledby="activate-info">
+          <h2 id="activate-info">Puedes comenzar sin experiencia</h2>
+          <p>No necesitas ventas previas ni evidencias para solicitar tu activación.</p>
+        </aside>
+        <div class="auth-field activate-wide">
+          <label for="campus">Universidad / campus</label>
+          <input class="auth-control" id="campus" type="text" autocomplete="off" readonly value="PUCP · San Miguel">
+        </div>
+        <label class="auth-remember activate-agreement activate-wide" for="normas"><input id="normas" type="checkbox" aria-invalid="true" aria-describedby="activate-error home-pending"><span>Acepto las normas de publicación y convivencia.</span></label>
+        <button class="button button-primary activate-wide activate-submit" type="button" aria-disabled="true" aria-describedby="home-pending" title="Vista estática: no se envía la solicitud ni se activa el perfil">Enviar solicitud</button>
+        <a class="button button-outline activate-wide activate-save" href="activar-vendedor-borrador.html#error" aria-describedby="home-pending" title="Ver ejemplo de borrador; los cambios no se guardan">Guardar borrador</a>
+        <button type="submit" hidden disabled aria-hidden="true">Envío no disponible</button>
+      </form>
+      </div>
+    </main>
+  </div>
+
+  <nav class="home-bottom" aria-label="Navegación móvil autenticada">
+    <ul>
+      <li><a href="inicio.html"><img src="assets/icons/campus.svg" width="24" height="24" alt=""><span>Inicio</span></a></li>
+      <li><a href="explorar.html"><img src="assets/icons/explorar.svg" width="24" height="24" alt=""><span>Explorar</span></a></li>
+      <li><a href="#contenido" aria-current="page"><img src="assets/icons/publicar.svg" width="24" height="24" alt=""><span>Publicar</span></a></li>
+      <li><a role="link" aria-disabled="true" aria-describedby="home-pending" tabindex="0" title="Reservas — pendiente de implementación"><img src="assets/icons/reservas.svg" width="24" height="24" alt=""><span>Reservas</span></a></li>
+    </ul>
+  </nav>
+</body>
+</html>

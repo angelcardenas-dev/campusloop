@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Activación del perfil vendedor de CampusLoop: representación visual estática para estudiantes de Lima.">
+  <title>Borrador guardado · Ejemplo estático — CampusLoop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="activate-draft-page">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <p id="home-pending" class="visually-hidden">Vista estática de Activar perfil vendedor. No se envían solicitudes, no se suben evidencias y no se guardan datos ni borradores. Cambiar de variante carga datos de ejemplo, no conserva lo escrito. Publicar artículos, Reservas, Notificaciones y Mi cuenta todavía no están implementados.</p>
+
+  <span class="visually-hidden activate-origin" id="inicial"></span>
+  <span class="visually-hidden activate-origin" id="experiencia"></span>
+  <span class="visually-hidden activate-origin" id="error"></span>
+  <span class="visually-hidden activate-origin" id="listo"></span>
+  <span class="visually-hidden activate-origin" id="evidencia-error"></span>
+  <span class="visually-hidden activate-origin" id="experiencia-lista"></span>
+  <!-- Vista independiente del modal V2; no es una confirmación de guardado real. -->
+  <main id="contenido" class="activate-draft-main" tabindex="-1">
+    <section class="panel activate-draft" aria-labelledby="activate-draft-title" aria-describedby="activate-draft-copy activate-static">
+      <h1 id="activate-draft-title">Borrador guardado</h1>
+      <p id="activate-draft-copy">Tu borrador ya está guardado. La solicitud todavía no fue enviada. Puedes retomarla desde Mi cuenta.</p>
+      <a class="button button-primary activate-wide activate-return activate-return-inicial" href="activar-vendedor.html" title="Volver al ejemplo inicial; no se recuperan datos guardados">Volver a la activación</a>
+      <a class="button button-primary activate-wide activate-return activate-return-experiencia" href="activar-vendedor-experiencia.html" title="Volver al ejemplo experiencia; no se recuperan datos guardados">Volver a la activación</a>
+      <a class="button button-primary activate-wide activate-return activate-return-error" href="activar-vendedor-error.html" title="Volver al ejemplo error; no se recuperan datos guardados">Volver a la activación</a>
+      <a class="button button-primary activate-wide activate-return activate-return-listo" href="activar-vendedor-listo.html" title="Volver al ejemplo listo; no se recuperan datos guardados">Volver a la activación</a>
+      <a class="button button-primary activate-wide activate-return activate-return-evidencia-error" href="activar-vendedor-evidencia-error.html" title="Volver al ejemplo evidencia-error; no se recuperan datos guardados">Volver a la activación</a>
+      <a class="button button-primary activate-wide activate-return activate-return-experiencia-lista" href="activar-vendedor-experiencia-lista.html" title="Volver al ejemplo experiencia-lista; no se recuperan datos guardados">Volver a la activación</a>
+      <a class="button button-outline activate-wide activate-exit" href="inicio.html" title="Destino provisional: Inicio. Mi cuenta todavía no está implementada." aria-describedby="activate-static">Salir por ahora</a>
+    </section>
+    <p class="activate-static" id="activate-static">Ejemplo estático: no se guardó un borrador ni se envió una solicitud. Salir por ahora lleva a Inicio; Mi cuenta está pendiente.</p>
+  </main>
+</body>
+</html>
