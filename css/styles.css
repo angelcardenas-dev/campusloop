@@ -896,3 +896,91 @@ h2 { font-size: 28px; font-weight: 700; line-height: 36px; }
   .publish-actions .button + .button { margin: 16px 0 0; }
   .publish-state-note { padding-right: 16px; padding-left: 16px; }
 }
+
+/* Reservas y mensajes V2, etapa 1. Las conversaciones son ejemplos estáticos.
+   Tres columnas inline-block en Desktop; listado y conversación separados en Mobile. */
+.reservation-heading h1 { margin: 0; font-size: 40px; line-height: 48px; }
+.reservation-heading p { margin-top: 8px; color: var(--muted); font-size: 16px; line-height: 24px; }
+.reservation-columns { font-size: 0; }
+.reservation-interactions, .reservation-conversation, .reservation-context { display: inline-block; vertical-align: top; background: var(--surface); font-size: 16px; }
+.reservation-interactions { width: 280px; margin-right: 24px; padding: 12px; }
+.reservation-interaction-list { margin-top: 12px; }
+.reservation-interaction-list > li + li { margin-top: 12px; }
+.reservation-interaction { display: block; width: calc(100% + 2px); padding: 16px; color: var(--text); }
+.reservation-interaction-identity { font-size: 0; }
+.reservation-interaction-avatar { display: inline-block; vertical-align: top; width: 36px; height: 36px; margin-right: 8px; border-radius: 50%; object-fit: cover; }
+.reservation-avatar-placeholder { background: var(--brand-light); }
+.reservation-interaction-copy { display: inline-block; vertical-align: top; width: calc(100% - 44px); }
+.reservation-interaction-copy h3 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.reservation-interaction-copy p { margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 18px; }
+.reservation-interaction > .home-badge, .reservation-preview { margin-top: 8px; }
+.reservation-badge-consultation { background: #f3f4f6; }
+.reservation-badge-confirmed { background: #fff7e6; }
+.reservation-badge-completed { background: #ecfdf3; }
+.reservation-preview { color: var(--muted); font-size: 13px; line-height: 18px; }
+.reservation-conversation { width: calc(100% - 712px); margin-right: 24px; padding: 16px; }
+.reservation-conversation > * + *, .reservation-context > * + * { margin-top: 16px; }
+/* Las instancias del mockup usan 2 px más que el interior de sus tarjetas. */
+.reservation-person, .reservation-conversation > .reservation-product, .reservation-messages, .reservation-composer { width: calc(100% + 2px); }
+.reservation-person, .reservation-product-identity { font-size: 0; }
+.reservation-person > img { width: 40px; height: 40px; margin-right: 12px; border-radius: 50%; object-fit: cover; }
+.reservation-person-copy { display: inline-block; vertical-align: top; width: calc(100% - 52px); }
+.reservation-main .reservation-person h2 { font-size: 16px; font-weight: 600; line-height: 23px; }
+.reservation-person-copy p { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 17px; }
+.reservation-product { padding: 16px; background: var(--surface); }
+.reservation-product-identity > img { width: 64px; height: 64px; margin-right: 12px; border-radius: 8px; object-fit: cover; }
+.reservation-product-copy { display: inline-block; vertical-align: top; width: calc(100% - 76px); }
+.reservation-product h3 { font-size: 16px; font-weight: 600; line-height: 23px; }
+.reservation-price { margin-top: 4px; color: var(--brand); font-size: 20px; font-weight: 700; line-height: 28px; }
+.reservation-campus { margin-top: 12px; color: var(--muted); font-size: 13px; line-height: 18px; }
+.reservation-date, .reservation-operation { color: var(--muted); font-size: 12px; line-height: 17px; }
+.reservation-messages > li + li { margin-top: 16px; }
+.reservation-message { display: inline-block; vertical-align: top; width: 360px; max-width: calc(100% - 24px); padding: 12px; border-radius: 12px; background: var(--brand-light); text-align: left; }
+.reservation-message-incoming { background: var(--page); }
+.reservation-message p { font-size: 14px; line-height: 20px; }
+.reservation-message time { display: block; margin-top: 4px; font-size: 11px; line-height: 16px; }
+.reservation-message-incoming time { color: var(--muted); }
+.reservation-message-outgoing { text-align: right; }
+.reservation-composer .auth-field { margin: 0; }
+.reservation-composer > .reservation-action { margin-top: 16px; }
+.reservation-action { width: 100%; font-family: inherit; cursor: default; }
+.reservation-action:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.reservation-context { width: 384px; padding: 16px; }
+.reservation-states > li + li { margin-top: 16px; }
+.reservation-states h3 { color: var(--muted); font-size: 14px; font-weight: 400; line-height: 20px; }
+.reservation-states p { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 17px; }
+.reservation-states [aria-current=step] h3 { color: var(--brand); font-weight: 600; }
+.reservation-main .reservation-safety h2, .reservation-main .reservation-error-alert h2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.reservation-safety p { color: var(--text); }
+.reservation-error-alert p { color: var(--muted); }
+.reservation-back, .reservation-mobile-detail { display: none; }
+
+/* Vacío y error conservan bloques compactos centrados, sin paneles decorativos. */
+.reservation-empty-page .reservation-main, .reservation-error-page .reservation-main { padding-top: 32px; padding-bottom: 40px; }
+.reservation-empty-page .reservation-main > *, .reservation-error-page .reservation-main > * { max-width: 720px; margin-right: auto; margin-left: auto; }
+.reservation-empty-page .reservation-main > * + *, .reservation-error-page .reservation-main > * + * { margin-top: 24px; }
+.reservation-empty-card, .reservation-error-card { padding: 32px; background: var(--surface); }
+.reservation-empty-card { text-align: center; }
+.reservation-empty-icon { display: block; margin: 0 auto; }
+.reservation-empty-copy { margin-top: 24px; }
+.reservation-empty-copy p { margin-top: 8px; color: var(--text); font-size: 13px; line-height: 18px; }
+.reservation-explore { display: block; width: 280px; max-width: 100%; margin: 24px auto 0; }
+.reservation-error-alert { width: calc(100% + 2px); margin: 0; background: #fef2f2; }
+.reservation-error-actions { width: calc(100% + 2px); margin-top: 24px; font-size: 0; }
+.reservation-error-actions .button { width: calc((100% - 16px) / 2); }
+.reservation-error-actions .button + .button { margin-left: 16px; }
+
+@media (max-width: 1100px) {
+  .reservation-heading h1 { font-size: 28px; line-height: 36px; }
+  .reservation-heading p { font-size: 14px; line-height: 20px; }
+  .reservation-interactions, .reservation-conversation { display: block; width: 100%; margin-right: 0; }
+  .reservation-context, .reservation-list-page .reservation-conversation, .reservation-consultation-page .reservation-interactions { display: none; }
+  .reservation-consultation-page .reservation-back { display: block; color: var(--brand); font-size: 14px; font-weight: 600; line-height: 20px; }
+  .reservation-consultation-page .reservation-mobile-detail { display: block; width: 100%; }
+  .reservation-empty-page .reservation-main, .reservation-error-page .reservation-main { padding-top: 24px; padding-bottom: 32px; }
+  .reservation-empty-card, .reservation-error-card { padding: 16px; }
+  .reservation-main .reservation-empty-copy h2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+  .reservation-explore { width: calc(100% + 2px); max-width: none; margin-left: -1px; }
+  .reservation-error-actions .button { display: block; width: 100%; }
+  .reservation-error-actions .button + .button { margin: 16px 0 0; }
+}
