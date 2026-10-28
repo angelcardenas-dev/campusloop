@@ -4,7 +4,7 @@ Marketplace universitario para estudiantes de Lima. Proyecto del curso IHC y Pro
 
 ## Alcance actual
 
-Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2**, **Perfil público del vendedor V2**, **Activar perfil vendedor V2** y **Nueva publicación V2**, en Desktop y Mobile. El diseño vigente es:
+Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el **Registro V2**, el **Inicio autenticado V2**, **Explorar artículos V2**, **Detalle de artículo V2**, **Perfil público del vendedor V2**, **Activar perfil vendedor V2**, **Nueva publicación V2** y la **Etapa 1 de Reservas y mensajes V2**, en Desktop y Mobile. Todas son representaciones estáticas. El diseño vigente es:
 
 - [Landing Desktop · 278:2735](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2735): 1440 × 1640 px.
 - [Landing Mobile · 278:2816](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2816): 390 × 2714 px.
@@ -23,7 +23,7 @@ Están implementados la **Landing pública V2**, el **Inicio de sesión V2**, el
 - [Guía visual V2 · 14:33](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=14-33).
 - [Biblioteca V2](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-2733).
 
-Las otras dos pantallas principales (Reservas y Mi cuenta), sus estados y flujos permanecen en Figma; todavía no tienen páginas HTML. Sus imágenes e íconos están preparados en assets: no se han descartado por no aparecer en las páginas actuales.
+Mi cuenta y las siguientes etapas de Reservas (propuestas de entrega, finalización y calificaciones) permanecen pendientes de implementación. La Etapa 1 incluye listado, consulta, vacío y error; no realiza operaciones reales. Sus referencias están en la tabla de Reservas. Los recursos compartidos para las próximas pantallas se conservan en assets.
 
 ## Tecnologías y límites del curso
 
@@ -67,6 +67,10 @@ CampusLoop/
 ├── publicar-borrador.html                # Confirmación estática de borrador
 ├── publicar-exito.html                   # Ejemplo visual de publicación exitosa
 ├── publicar-ia.html                      # Sugerencias opcionales de ejemplo
+├── reservas.html                         # Listado Mobile y tres paneles Desktop
+├── reservas-consulta.html                # Conversación de consulta de la MacBook
+├── reservas-vacio.html                   # Sin interacciones, ejemplo estático
+├── reservas-error.html                   # Error de carga, sin reintento real
 ├── css/
 │   └── styles.css
 └── assets/
@@ -105,6 +109,8 @@ Para revisar el perfil de Carlos, usar Ver perfil desde cualquiera de las tres v
 Para revisar Activar perfil vendedor, usar el botón con ese nombre desde inicio.html o inicio-nuevo.html, o abrir activar-vendedor.html con Live Server. Las dos opciones de experiencia navegan entre ejemplos estáticos; no conservan lo escrito. Las variantes de error, listas, pendiente y activa se abren desde los enlaces de la tabla de Activación. Enviar solicitud no navega a una confirmación ni envía datos.
 
 Para revisar Nueva publicación, abrir publicar.html con Live Server o usar Publicar / Publicar artículo desde inicio-vendedor.html o activar-vendedor-activo.html. En las vistas de comprador, Publicar abre activar-vendedor.html. Las variantes de error, lista y éxito se abren desde la tabla de Publicación; el botón Publicar artículo no crea ni simula una publicación. Guardar borrador y Ver sugerencias recorren ejemplos estáticos, sin conservar lo escrito.
+
+Para revisar Reservas, abrir reservas.html con Live Server o usar Reservas en la cabecera o barra inferior de las páginas autenticadas. En Mobile, la primera interacción abre reservas-consulta.html y Volver a Reservas regresa al listado. En Desktop ambas páginas reutilizan la misma composición de tres paneles. Abrir reservas-vacio.html y reservas-error.html directamente para revisar sus estados de ejemplo; no dependen de una carga ni una búsqueda real. Comprobar a 1440 y 390 px, desplazándose hasta Enviar y Ver detalle de la reserva en la consulta Mobile.
 
 No hace falta npm install ni un proceso de compilación. También puede abrirse index.html directamente: todas las rutas son relativas y locales. La recarga de Live Server puede inyectar un script de la extensión; ese script no forma parte del proyecto.
 
@@ -173,7 +179,7 @@ Las tres vistas representan estados de ejemplo independientes; no cambian roles 
 - Los filtros ofrecen casillas, selectores y precios numéricos nativos. Limpiar filtros solo restablece los controles locales; no cambia el estado vacío ni el catálogo. Aplicar filtros es type="button" sin acción, con aria-disabled. El formulario no tiene controles name ni botones submit y no envía datos.
 - El panel Mobile es una página estática independiente, como el frame de referencia sin cabecera ni barra inferior. Cerrar filtros vuelve al catálogo; todavía no se conservan las selecciones entre páginas.
 - La búsqueda y el ordenamiento no cambian los artículos. Más recientes es la única opción definida en el diseño. Reintentar no hace peticiones. La frase de Figma «Tu búsqueda se conserva» es texto del estado de ejemplo; esta etapa no almacena búsquedas ni garantiza persistencia.
-- Ver detalle de la MacBook Air M1 abre detalle.html. Los detalles de los otros siete artículos, Reservas, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio y Explorar sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
+- Ver detalle de la MacBook Air M1 abre detalle.html. Los detalles de los otros siete artículos, Notificaciones y Mi cuenta siguen pendientes, con aria-disabled, title y descripción accesible, sin enlaces a archivos inexistentes. Inicio, Explorar y Reservas sí navegan entre páginas implementadas. No se conectó Login con Inicio ni se simulan sesiones.
 
 ## Cómo está construido Detalle
 
@@ -266,6 +272,25 @@ El nombre del frame V2 es Publicar artículo. Se implementan seis vistas, cada u
 - Los accesos Publicar de inicio-vendedor.html y activar-vendedor-activo.html llevan a publicar.html. Los de Inicio comprador/nuevo, Explorar, Detalle y los perfiles públicos llevan a Activación. El vendedor mostrado en un perfil público no determina los permisos del visitante. Las otras variantes de Activación mantienen su composición y no saltan directamente a publicar; la pendiente conserva su estado.
 - Inicio desde Publicar vuelve a inicio-vendedor.html. Las otras páginas conservan su usuario de ejemplo: no arrastran roles al navegar ni detectan sesiones. El acceso directo a publicar.html no está protegido; el control real de permisos requiere autenticación y backend futuros. Activar no exige experiencia a todos ni asigna reputación.
 
+## Cómo está construido Reservas y mensajes — Etapa 1
+
+| Archivo | Variante | Figma Desktop | Figma Mobile |
+| --- | --- | --- | --- |
+| [reservas.html](reservas.html) | Reservas inicial; listado Mobile | [278:3929](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3929) | [278:4006](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-4006) |
+| [reservas-consulta.html](reservas-consulta.html) | Consulta con Carlos Pérez | Reutiliza la conversación de [278:3929](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=278-3929); no hay un frame Desktop independiente para esta entrega | [303:1433](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=303-1433) |
+| [reservas-vacio.html](reservas-vacio.html) | Sin interacciones | [302:2468](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=302-2468) | [303:2208](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=303-2208) |
+| [reservas-error.html](reservas-error.html) | Error de carga | [302:2499](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=302-2499) | [303:2252](https://www.figma.com/design/b14UnSTg43slwvD1fV0XCG/CampusLoop?node-id=303-2252) |
+
+- header y nav reutilizan la cabecera y barra inferior home-, con Reservas activo. main agrupa la presentación y las interacciones; section organiza listado y conversación, article identifica cada interacción, producto y mensaje, y aside presenta el estado y la seguridad. time expresa las fechas y horas del diseño. form contiene un campo Mensaje con label asociado y nombre accesible.
+- Las clases reservation- se añaden al final de styles.css sin cambiar las reglas anteriores. Se reutilizan panel, button, home-badge, auth-field, auth-control, auth-info, Inter y las variables V2. inline-block y vertical-align colocan los paneles de 280, 568 y 384 px separados por 24 px a 1440 px. calc adapta la columna central; border-box, padding, bordes y márgenes reproducen las medidas.
+- En Mobile se separan listado y conversación. La cabecera de 72 px y barra inferior de 80 px quedan fuera de home-viewport; el contenido central se desplaza sin ocultar las últimas acciones. Vacío y error usan tarjetas compactas centradas, de 720 px máximos en Desktop y ancho disponible en Mobile.
+- Se reutilizan la MacBook y los avatares de María, Carlos y Ana, ocho SVG locales e Inter. El avatar de Sofía es el círculo sin fotografía del frame, representado con CSS. No se descargaron ni duplicaron recursos.
+- CL-1024 corresponde a la consulta sobre MacBook Air M1 256 GB de Carlos Pérez, PUCP · San Miguel, S/ 2,400. Consulta no equivale a Reserva ni a compra realizada. Confirmado describe una entrega acordada por ambos; Completada requiere finalización por ambos. Esta etapa solo explica los estados: no permite cambiarlos ni valorar operaciones.
+- Solo la interacción de la MacBook abre su conversación. Las de iPad, calculadora y libro permanecen pendientes, sin abrir datos de otro producto. El acceso Ver reserva de Inicio sigue pendiente porque corresponde a la entrega Confirmada del iPad. Reservar artículo y Contactar vendedor de las páginas anteriores no se conectan a operaciones ni a esta consulta preexistente.
+- Enviar, Reservar artículo, Ver detalle de la reserva y Reintentar son acciones pendientes, identificadas mediante aria-disabled, title y descripciones accesibles. Enviar y Reintentar no envían mensajes ni hacen peticiones. El formulario usa method=post, sin controles name, con Enviar type=button y un submit oculto deshabilitado que impide el envío implícito con Enter. Escribir solo modifica el campo local mientras la página permanece abierta; no hay almacenamiento ni persistencia.
+- Explorar artículos del estado vacío abre explorar.html; Ir a Inicio del error abre inicio.html. Se habilitaron únicamente los enlaces de navegación Reservas y sus descripciones en las 24 páginas autenticadas que los contienen. No hay detección de roles ni sesiones: cada página conserva su usuario estático de ejemplo.
+- No se implementan todavía propuestas de entrega, confirmación de finalización, calificaciones, envío/recepción de mensajes, carga de datos, autenticación ni creación de reservas. Mi cuenta y Notificaciones siguen pendientes. Los estados vacío y error se revisan por URL directa; ninguna acción los genera automáticamente.
+
 ## Comprobaciones realizadas
 
 Revisión del 23/10/2026:
@@ -295,6 +320,8 @@ Revisión de Activar perfil vendedor del 26/10/2026: nueve vistas verificadas co
 
 Revisión de Nueva publicación del 26/10/2026: seis vistas probadas con Live Server y Chrome a 1440, 1280, 1920, 320, 390, 768 y 1024 px. Las medidas principales coinciden con las doce referencias V2 a 1440 y 390 px. Sin desbordamiento horizontal, textos fuera de sus cajas ni errores de recursos. Se verificaron etiquetas, Inter, foco, navegación por teclado, scroll y acceso a las últimas acciones sobre la barra inferior. Los enlaces distinguen vendedor activo y comprador; borrador y sugerencias regresan a sus ejemplos de origen. Publicar, Subir fotos y Enter no generan peticiones. Las 48 capturas de las 24 páginas anteriores permanecen idénticas. Se compararon las seis vistas Desktop y los seis encuadres Mobile; el contenido Mobile inferior se contrastó con capas y medidas de Figma y se capturó completo desde HTML. Las evidencias están en Evidencias_Figma_V2/Documentacion/Implementacion_Publicar. Quedan pendientes la revisión visual del usuario, dispositivos físicos, otros navegadores y las funciones reales descritas arriba.
 
+Revisión de Reservas y mensajes — Etapa 1 del 27/10/2026: cuatro páginas probadas con Live Server y Chrome a 320, 390, 768, 1024, 1280, 1440 y 1920 px. Sin desplazamiento horizontal, textos fuera de sus cajas ni errores de recursos. Se comprobaron Inter, etiquetas, foco de teclado, desplazamiento Mobile, los 48 enlaces de navegación desde 24 páginas y los regresos del listado, consulta, vacío y error. Enter, Enviar, Reservar artículo y Reintentar no generan peticiones ni cambian el estado Consulta. Las 60 capturas de las 30 páginas anteriores coinciden exactamente con las referencias anteriores a los cambios. Las posiciones y medidas principales de las ocho vistas Desktop/Mobile coinciden con las capas de Figma. Se ajustaron los colores del aviso de seguridad, los estados informativos y la descripción del estado vacío al contraste del diseño. En la consulta Mobile el primer mensaje conserva dos líneas y la misma altura, pero Chrome coloca «M1» en la segunda línea mientras Figma lo muestra en la primera; se conserva Inter local y sus medidas sin forzar un corte artificial. Las capturas Mobile de Figma cubren el viewport; el contenido inferior se contrastó con capas y medidas y se capturó completo desde HTML. Evidencias: Evidencias_Figma_V2/Documentacion/Implementacion_Reservas_Mensajes_Etapa_1. Quedan pendientes la revisión visual del usuario, otros navegadores, dispositivos físicos y las funcionalidades fuera de esta etapa.
+
 ## Evidencias y material académico
 
 Ubicación externa:
@@ -313,4 +340,4 @@ D:\Ciclo 5\IHC y Programacion WEB\CampusLoop\
 
 La documentación de auditoría, inventario de los 169 frames, resultados y capturas se conserva allí. El plan de diseño anterior y los recursos conceptuales descartados se archivaron en el respaldo técnico. No son instrucciones vigentes.
 
-La rama de trabajo de esta implementación es feature/publicar. No se han realizado commits ni pushes de esta revisión.
+La rama de trabajo de esta implementación es feature/reservas-mensajes. No se han realizado commits, pushes, merges ni Pull Requests de esta revisión.
